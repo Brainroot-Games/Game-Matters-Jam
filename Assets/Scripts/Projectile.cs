@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Emotions;
 
 public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
 
-    private Vector2 direction;
     private Rigidbody2D rb;
+    private Vector2 direction;
+
+    public Emotion Emotion { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,6 +18,8 @@ public class Projectile : MonoBehaviour
 
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         direction = (worldPos - rb.position).normalized;
+
+        GetComponentInChildren<SpriteRenderer>().color = GetColor(Emotion);
     }
 
     // Update is called once per frame
