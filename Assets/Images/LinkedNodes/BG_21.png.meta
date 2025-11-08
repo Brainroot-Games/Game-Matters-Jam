@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 774662241c74e7543ad939e1b87eb8cd
+guid: 4bdda425dccde07438e264cf4d1743b8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2555479407659960142
-    second: Background_brain_0
+      213: -5478130886327280486
+    second: BG_21_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background_brain_0
+      name: BG_21_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e47c5645bf2e67320800000000000000
-      internalID: 2555479407659960142
+      spriteID: a9cdd57bbf4c9f3b0800000000000000
+      internalID: -5478130886327280486
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background_brain_0: 2555479407659960142
+      BG_21_0: -5478130886327280486
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
