@@ -1,11 +1,9 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelMove : MonoBehaviour
 {
     public GameObject levelName;
     public GameObject currentLevelName;
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,6 +12,7 @@ public class LevelMove : MonoBehaviour
             if (EmotionPowerManager.Instance.AreAllPowersCollected())
             {
                 levelName = MapManager.Instance.bossLevel;
+                MapManager.Instance.StartCoroutine(EnableForSeconds(MapManager.Instance.bossStart, 7f));
             }
             print("Cambio Livello a " + levelName);
 
@@ -32,5 +31,19 @@ public class LevelMove : MonoBehaviour
 
             currentLevelName.SetActive(false);
         }
+    }
+
+    private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds) {
+        obj.SetActive(true);
+
+        // Pause the game
+        Time.timeScale = 0f;
+
+        // Use WaitForSecondsRealtime to wait regardless of time scale
+        yield return new WaitForSecondsRealtime(seconds);
+
+        // Restore the original time scale
+        Time.timeScale = 1;
+        obj.SetActive(false);
     }
 }

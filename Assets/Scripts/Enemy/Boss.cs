@@ -10,6 +10,7 @@ public class Boss : Enemy
     public float specialAttackTime = 20f;
     public int specialAttackCount = 5;
     public float specialAttackRadius = 1.5f;
+    public GameObject bossObjDeath;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -87,5 +88,23 @@ public class Boss : Enemy
 
             yield return new WaitForSeconds(specialAttackTime);
         }
+    }
+
+    private void OnDestroy() {
+        StartCoroutine(EnableForSeconds(bossObjDeath, 7f));
+    }
+
+    private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds) {
+        obj.SetActive(true);
+
+        // Pause the game
+        Time.timeScale = 0f;
+
+        // Use WaitForSecondsRealtime to wait regardless of time scale
+        yield return new WaitForSecondsRealtime(seconds);
+
+        // Restore the original time scale
+        Time.timeScale = 1;
+        obj.SetActive(false);
     }
 }

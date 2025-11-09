@@ -8,6 +8,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour {
 
     public GameObject bossLevel;
+    public GameObject bossStart;
 
     public static MapManager Instance { get; private set; }
 

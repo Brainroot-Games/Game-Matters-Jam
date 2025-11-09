@@ -4680,6 +4680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
   bossLevel: {fileID: 284726601}
+  bossStart: {fileID: 489471407}
 --- !u!1 &726351627
 GameObject:
   m_ObjectHideFlags: 0
@@ -9793,6 +9794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 8165010134357510179, guid: e14c6e169137a53408fb8299fc7410dc, type: 3}
+      propertyPath: bossObjDeath
+      value: 
+      objectReference: {fileID: 1724832337}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
