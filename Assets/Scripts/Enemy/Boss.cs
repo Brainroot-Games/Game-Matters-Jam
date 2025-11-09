@@ -26,6 +26,12 @@ public class Boss : Enemy
         return damage * 2;
     }
 
+
+    private void SetColor()
+    {
+        spriteRenderer.color = GetColor(Emotion);
+    }
+
     private IEnumerator ChangeEmotion()
     {
         while (true)
@@ -46,7 +52,7 @@ public class Boss : Enemy
     {
         while (true)
         {
-            targetPosition = Random.insideUnitCircle * Utils.boundsRay;
+            targetPosition = Random.insideUnitCircle * Utils.boundsRadius;
             yield return new WaitForSeconds(roamTime);
         }
     }

@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private Rigidbody2D rb;
     private Vector2 movement;
-    private Vector2 lastPosition;
     private bool canAttack = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour
     {
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
-        lastPosition = rb.position;
     }
 
     // Update is called once per frame
@@ -33,9 +31,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lastPosition = rb.position;
         Vector2 newPosition = rb.position + movement * speed * Time.deltaTime;
-        rb.MovePosition(newPosition);
+        rb.MovePosition(Utils.ClampToBounds(newPosition));
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -76,13 +73,5 @@ public class PlayerController : MonoBehaviour
         canAttack = false;
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Bounds"))
-        {
-            rb.MovePosition(lastPosition);
-        }
     }
 }

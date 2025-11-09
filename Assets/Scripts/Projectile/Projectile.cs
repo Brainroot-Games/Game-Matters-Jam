@@ -25,6 +25,10 @@ public abstract class Projectile : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 newPosition = rb.position + Direction * speed * Time.deltaTime;
+        if (Utils.IsOutsideBounds(newPosition))
+        {
+            Destroy(gameObject);
+        }
         rb.MovePosition(newPosition);
     }
 
@@ -48,14 +52,6 @@ public abstract class Projectile : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Bounds"))
-        {
-            Destroy(gameObject);
         }
     }
 }
