@@ -14,8 +14,9 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < enemyCount; i++)
         {
-            Vector2 spawnPosition = Random.insideUnitCircle * Utils.boundsRay;
-            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            Vector3 spawnPosition = Random.insideUnitCircle * Utils.boundsRay;
+            spawnPosition.z = -1;
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, transform);
             enemy.GetComponent<Enemy>().Emotion = (Emotion)Random.Range(1, 6);
         }
     }

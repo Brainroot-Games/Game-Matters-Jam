@@ -9,7 +9,7 @@ public abstract class Enemy : MonoBehaviour
     public GameObject projectilePrefab;
 
     protected int currentLife;
-    protected Vector2 targetPosition;
+    protected Vector3 targetPosition;
     protected GameObject player;
 
     private SpriteRenderer spriteRenderer;
@@ -28,6 +28,7 @@ public abstract class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        targetPosition.z = -1;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 
