@@ -6642,7 +6642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
-  emotion: 4
+  emotion: 2
   dialog: The state I've been in... that wasn't normal. But this sadness that I feel
     now... it's important! It makes me understand I need to do something!
   audioClip: {fileID: 0}
@@ -8951,7 +8951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
-  emotion: 2
+  emotion: 1
   dialog: I remember this feeling... it's so warm! I feel the energy to make a change!
   audioClip: {fileID: 0}
   textToEnable: {fileID: 2126927354}
@@ -9796,7 +9796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8165010134357510179, guid: e14c6e169137a53408fb8299fc7410dc, type: 3}
       propertyPath: maxLife
-      value: 1
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8165010134357510179, guid: e14c6e169137a53408fb8299fc7410dc, type: 3}
       propertyPath: bossObjDeath
@@ -10115,7 +10115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
-  emotion: 1
+  emotion: 4
   dialog: The love for doing what passionates me! The joy of sharing my life with
     people I love! This is what I want to seek!
   audioClip: {fileID: 0}
@@ -11900,10 +11900,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sprites:
   - {fileID: 4334783836991956000, guid: 9f1b9ffd19d67b34a9845cda880f240e, type: 3}
-  - {fileID: 3183933807214557300, guid: 5792c0081cdc31a4d8c6e0c44a0cea54, type: 3}
   - {fileID: -5281331550877710532, guid: c9b1b8ec7a20ee94b859570e8f50cff2, type: 3}
-  - {fileID: -200890126142207307, guid: c8c9e6faa66e701438b0e0c53a106797, type: 3}
   - {fileID: -8933874411373864368, guid: 0a62f1bfc95d95948b8fb7ec32861517, type: 3}
+  - {fileID: -200890126142207307, guid: c8c9e6faa66e701438b0e0c53a106797, type: 3}
+  - {fileID: 3183933807214557300, guid: 5792c0081cdc31a4d8c6e0c44a0cea54, type: 3}
   - {fileID: -2175102286716891337, guid: 08712e0d18b4f4f46a513ab4098bec01, type: 3}
 --- !u!1 &1965100559
 GameObject:
