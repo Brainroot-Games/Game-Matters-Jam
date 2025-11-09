@@ -9795,6 +9795,10 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 8165010134357510179, guid: e14c6e169137a53408fb8299fc7410dc, type: 3}
+      propertyPath: maxLife
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165010134357510179, guid: e14c6e169137a53408fb8299fc7410dc, type: 3}
       propertyPath: bossObjDeath
       value: 
       objectReference: {fileID: 1724832337}

@@ -91,7 +91,7 @@ public class Boss : Enemy
     }
 
     private void OnDestroy() {
-        StartCoroutine(EnableForSeconds(bossObjDeath, 7f));
+        MapManager.Instance.StartCoroutine(EnableForSeconds(bossObjDeath, 7f));
     }
 
     private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds) {
