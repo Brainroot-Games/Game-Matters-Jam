@@ -3715,8 +3715,8 @@ Transform:
   m_GameObject: {fileID: 709923398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.68, y: 0.47000003, z: -1}
-  m_LocalScale: {x: 0.072252184, y: 0.072252184, z: 0.18879588}
+  m_LocalPosition: {x: 4.36, y: 0.34, z: -1}
+  m_LocalScale: {x: 0.1165057, y: 0.1165057, z: 0.18879588}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 674537469}
@@ -3768,15 +3768,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4976912170500460815, guid: 217483ca354f9964faaa5dc111212cf4, type: 3}
+  m_Sprite: {fileID: 8383979877746348519, guid: b6ecb43b3ef35664cb565de16c0fecdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 7.35, y: 8.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &709923401
@@ -3817,8 +3817,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
-    newSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 7.35, y: 8.24}
+    newSize: {x: 7.35, y: 8.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -3837,8 +3837,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
-  emotion: 0
-  dialog: 
+  emotion: 5
+  dialog: For a long time I haven't even been afraid of what could happen to me...
+    I ignored all the alarms that were there to protect me.
   audioClip: {fileID: 0}
   collected: 0
   active: 0
@@ -4233,7 +4234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &757730506
 Transform:
   m_ObjectHideFlags: 0
@@ -5040,7 +5041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &842024049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5582,8 +5583,8 @@ Transform:
   m_GameObject: {fileID: 1007227396}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.68, y: 0.47000003, z: -1}
-  m_LocalScale: {x: 0.072252184, y: 0.072252184, z: 0.18879588}
+  m_LocalPosition: {x: -3.76, y: -2.26, z: -1}
+  m_LocalScale: {x: 0.1165057, y: 0.1165057, z: 0.18879588}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 330447161}
@@ -5635,15 +5636,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4976912170500460815, guid: 217483ca354f9964faaa5dc111212cf4, type: 3}
+  m_Sprite: {fileID: 8840700793522568315, guid: b19f97aa571d85249893a864f062d319, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 7.54, y: 7.45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1007227399
@@ -5684,8 +5685,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
-    newSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 7.54, y: 7.45}
+    newSize: {x: 7.54, y: 7.45}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -5704,8 +5705,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
-  emotion: 0
-  dialog: 
+  emotion: 2
+  dialog: The state I've been in... that wasn't normal. But this sadness that I feel
+    now... it's important! It makes me understand I need to do something!
   audioClip: {fileID: 0}
   collected: 0
   active: 0
@@ -6078,8 +6080,8 @@ Transform:
   m_GameObject: {fileID: 1270570152}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.68, y: 0.47000003, z: -1}
-  m_LocalScale: {x: 0.072252184, y: 0.072252184, z: 0.18879588}
+  m_LocalPosition: {x: 0.06, y: 3.31, z: -1}
+  m_LocalScale: {x: 0.11650569, y: 0.11650569, z: 0.30443087}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 757730506}
@@ -6201,7 +6203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
   emotion: 3
-  dialog: 
+  dialog: This sense of disgust... yes, I have to repel what's wrong! I forgot I
+    had to fight what sickens me!
   audioClip: {fileID: 0}
   collected: 0
   active: 0
@@ -6781,7 +6784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1395329144
 Transform:
   m_ObjectHideFlags: 0
@@ -7414,8 +7417,8 @@ Transform:
   m_GameObject: {fileID: 1547641144}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.68, y: 0.47000003, z: -1}
-  m_LocalScale: {x: 0.072252184, y: 0.072252184, z: 0.18879588}
+  m_LocalPosition: {x: 0.96, y: -3.89, z: -1}
+  m_LocalScale: {x: 0.1165057, y: 0.1165057, z: 0.18879588}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2108052735}
@@ -7467,15 +7470,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4976912170500460815, guid: 217483ca354f9964faaa5dc111212cf4, type: 3}
+  m_Sprite: {fileID: 3658729199660439144, guid: a2a1e3563077ba0449b9f4eeeff036e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 7.63, y: 8.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1547641147
@@ -7516,8 +7519,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
-    newSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 7.63, y: 8.01}
+    newSize: {x: 7.63, y: 8.01}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -7536,8 +7539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
-  emotion: 0
-  dialog: 
+  emotion: 1
+  dialog: I remember this feeling... it's so warm! I feel the energy to make a change!
   audioClip: {fileID: 0}
   collected: 0
   active: 0
@@ -8283,8 +8286,8 @@ Transform:
   m_GameObject: {fileID: 1700208870}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.68, y: 0.47000003, z: -1}
-  m_LocalScale: {x: 0.072252184, y: 0.072252184, z: 0.18879588}
+  m_LocalPosition: {x: -2.69, y: 2.68, z: -1}
+  m_LocalScale: {x: 0.1165057, y: 0.1165057, z: 0.18879588}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 759517725}
@@ -8336,15 +8339,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4976912170500460815, guid: 217483ca354f9964faaa5dc111212cf4, type: 3}
+  m_Sprite: {fileID: -7920528848109553320, guid: c2ea228cb3a3f45478636812749d8f2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 8.39, y: 8.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1700208873
@@ -8385,8 +8388,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
-    newSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 8.39, y: 8.35}
+    newSize: {x: 8.39, y: 8.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -8405,8 +8408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
-  emotion: 0
-  dialog: 
+  emotion: 4
+  dialog: The love for doing what passionates me! The joy of sharing my life with
+    people I love! This is what I want to seek!
   audioClip: {fileID: 0}
   collected: 0
   active: 0
