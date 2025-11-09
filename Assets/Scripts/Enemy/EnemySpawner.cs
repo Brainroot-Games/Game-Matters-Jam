@@ -3,7 +3,7 @@ using static Emotions;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public int minCount = 2;
+    public int minCount = 1;
     public int maxCount = 5;
     public GameObject enemyPrefab;
 

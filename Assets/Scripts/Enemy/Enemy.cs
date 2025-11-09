@@ -3,7 +3,7 @@ using static Emotions;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public int maxLife = 50;
+    public int maxLife = 30;
     public int damage = 20;
     public float speed = 2.0f;
     public GameObject projectilePrefab;
