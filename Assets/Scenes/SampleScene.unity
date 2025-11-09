@@ -643,7 +643,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -654,8 +654,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Input keys:\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tW, A ,S , D for movement
-    \n1 Anger\t\t\t\t\t\t\t\t\t\t\t\t\t\n2 Sadness\n3 Disgust\n4 Joy\n5 Fear\n\n\n\t\t\t\t\t"
+  m_Text: "Input keys:\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tW,
+    A ,S , D for movement\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tLeft
+    Click for shooting \n1 Anger\t\t\t\t\t\t\t\t\t\t\t\t\t\n2 Sadness\n3 Disgust\n4
+    Joy\n5 Fear\nSpacebar Impulse\n\n\n\n\t\t\t\t\t"
 --- !u!222 &43767830
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -699,7 +701,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2528, y: -0}
-  m_SizeDelta: {x: 1891.4299, y: 1057.0996}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85527539
 MonoBehaviour:
@@ -929,7 +931,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2528, y: -0}
-  m_SizeDelta: {x: 1891.4299, y: 1057.0996}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109007201
 MonoBehaviour:
@@ -1476,6 +1478,7 @@ RectTransform:
   - {fileID: 1024185307}
   - {fileID: 489471408}
   - {fileID: 1724832338}
+  - {fileID: 1490703316}
   - {fileID: 43767828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2545,7 +2548,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2528, y: -0}
-  m_SizeDelta: {x: 1891.4299, y: 1057.0996}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385027460
 MonoBehaviour:
@@ -3370,7 +3373,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2528, y: -0}
-  m_SizeDelta: {x: 1891.4299, y: 1057.0996}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &489471409
 MonoBehaviour:
@@ -3445,7 +3448,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2528, y: -0}
-  m_SizeDelta: {x: 1891.4299, y: 1057.0996}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498126077
 MonoBehaviour:
@@ -4681,6 +4684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
   bossLevel: {fileID: 284726601}
   bossStart: {fileID: 489471407}
+  credits: {fileID: 1490703315}
 --- !u!1 &726351627
 GameObject:
   m_ObjectHideFlags: 0
@@ -6842,7 +6846,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2528, y: -0}
-  m_SizeDelta: {x: 1891.4299, y: 1057.0996}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1024185308
 MonoBehaviour:
@@ -8396,6 +8400,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2157062457976366779, guid: bbd57467916cab344b6d7a0c7043b643, type: 3}
   m_PrefabInstance: {fileID: 1470412108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1490703315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1490703316}
+  - component: {fileID: 1490703318}
+  - component: {fileID: 1490703317}
+  m_Layer: 0
+  m_Name: Credits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1490703316
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490703315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 274648195}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.2528, y: -0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1490703317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490703315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 325440641546151924, guid: 1cbd80911723caa44bbf92087e679517, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1490703318
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490703315}
+  m_CullTransparentMesh: 1
 --- !u!1 &1493492337
 GameObject:
   m_ObjectHideFlags: 0
@@ -10344,7 +10423,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2528, y: -0}
-  m_SizeDelta: {x: 1891.4299, y: 1057.0996}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724832339
 MonoBehaviour:
@@ -13687,7 +13766,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2528, y: -0}
-  m_SizeDelta: {x: 1891.4299, y: 1057.0996}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2126927356
 MonoBehaviour:
