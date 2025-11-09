@@ -5,6 +5,8 @@ public class EmotionPower : MonoBehaviour
     public Emotions.Emotion emotion;
     public string dialog;
     public AudioClip audioClip;
+    public GameObject textToEnable;
+    [SerializeField] private float secondsToWait = 7f;
 
     public bool collected = false;
     public bool active = false;
@@ -19,9 +21,31 @@ public class EmotionPower : MonoBehaviour
 
             EmotionPowerManager.Instance.CollectEmotionPower(emotion);
             // dialog
+<<<<<<< Updated upstream
             AudioManager.Instance.PlayAudioClip((int)emotion);
 
             gameObject.GetComponent<SpriteRenderer>().gameObject.SetActive(false);
+=======
+            AudioManager.Instance.PlayClusterAudio((int)emotion);
+            StartCoroutine(EnableForSeconds(textToEnable, secondsToWait));
+            
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+>>>>>>> Stashed changes
         }
+    }
+
+    private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds)
+    {
+        obj.SetActive(true);
+
+        // Pause the game
+        Time.timeScale = 0f;
+
+        // Use WaitForSecondsRealtime to wait regardless of time scale
+        yield return new WaitForSecondsRealtime(seconds);
+
+        // Restore the original time scale
+        Time.timeScale = 1;
+        obj.SetActive(false);
     }
 }

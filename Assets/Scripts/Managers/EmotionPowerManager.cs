@@ -3,6 +3,8 @@ using UnityEngine;
 public class EmotionPowerManager : MonoBehaviour
 {
     public bool[] activePowers = new bool[5];
+    public GameObject startObj;
+    [SerializeField] private float secondsToWait = 7f;
 
     public static EmotionPowerManager Instance { get; private set; }
 
@@ -21,6 +23,11 @@ public class EmotionPowerManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        StartCoroutine(EnableForSeconds(startObj, secondsToWait));
+    }
+
     public void CollectEmotionPower(Emotions.Emotion emotion)
     {
         int index = (int)emotion - 1;
@@ -28,5 +35,19 @@ public class EmotionPowerManager : MonoBehaviour
         {
             activePowers[index] = true;
         }
+    }
+
+    private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds) {
+        obj.SetActive(true);
+
+        // Pause the game
+        Time.timeScale = 0f;
+
+        // Use WaitForSecondsRealtime to wait regardless of time scale
+        yield return new WaitForSecondsRealtime(seconds);
+
+        // Restore the original time scale
+        Time.timeScale = 1;
+        obj.SetActive(false);
     }
 }
