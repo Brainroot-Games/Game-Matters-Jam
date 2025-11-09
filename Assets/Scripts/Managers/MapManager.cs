@@ -6,5 +6,19 @@ using UnityEngine;
 /// with predefined node connections and door configurations
 /// </summary>
 public class MapManager : MonoBehaviour {
+
+    public GameObject bossLevel;
+
     public static MapManager Instance { get; private set; }
+
+    private void Awake() {
+        // Singleton pattern
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject);
+            return;
+        }
+    }
 }

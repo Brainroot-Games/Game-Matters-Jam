@@ -22,13 +22,9 @@ public abstract class Projectile : MonoBehaviour
         spriteRenderer.color = GetColor(Emotion);
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Vector2 newPosition = rb.position + Direction * speed * Time.deltaTime;
-        if (Utils.IsOutsideBounds(newPosition))
-        {
-            Destroy(gameObject);
-        }
         rb.MovePosition(newPosition);
     }
 

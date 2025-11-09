@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EmotionPowerManager : MonoBehaviour
 {
-    public bool[] activePowers = new bool[5];
+    public bool[] activePowers = new bool[6];
 
     public static EmotionPowerManager Instance { get; private set; }
 
@@ -23,10 +23,22 @@ public class EmotionPowerManager : MonoBehaviour
 
     public void CollectEmotionPower(Emotions.Emotion emotion)
     {
-        int index = (int)emotion - 1;
+        int index = (int)emotion;
         if (index >= 0 && index < activePowers.Length)
         {
             activePowers[index] = true;
         }
+    }
+
+    public bool AreAllPowersCollected()
+    {
+        foreach (bool power in activePowers)
+        {
+            if (!power)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
