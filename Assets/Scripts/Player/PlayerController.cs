@@ -61,7 +61,8 @@ public class PlayerController : MonoBehaviour
     {
         if (System.Enum.TryParse<Emotion>(context.control.name, out var emotion))
         {
-            player.Emotion = emotion;
+            if (EmotionPowerManager.Instance.activePowers[(int)emotion - 1])
+                player.Emotion = emotion;
         }
     }
 

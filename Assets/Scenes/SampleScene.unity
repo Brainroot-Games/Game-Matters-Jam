@@ -1715,6 +1715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &330447160
@@ -2426,6 +2429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &455784663
@@ -3067,30 +3073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30089fa790f7f4418c7ded9bb802db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPowerManager
-  emotionPowers: 0000000000
   activePowers: 0000000000
-  emotionPowerObjects:
-  - {fileID: 2129074612}
-  - {fileID: 2085643545}
-  - {fileID: 1270570152}
-  - {fileID: 805392234}
-  - {fileID: 1700208870}
-  - {fileID: 1589455930}
-  - {fileID: 709923398}
-  - {fileID: 1497436199}
-  - {fileID: 2094192740}
-  - {fileID: 1007227396}
-  - {fileID: 674986786}
-  - {fileID: 1547641144}
-  - {fileID: 325742135}
-  - {fileID: 1018499691}
-  - {fileID: 444449212}
-  - {fileID: 1894248357}
-  - {fileID: 2137658193}
-  - {fileID: 2048630454}
-  - {fileID: 1572268229}
-  - {fileID: 1653453288}
-  - {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3513,6 +3496,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &679518532
@@ -3851,6 +3837,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &710329734
@@ -4751,6 +4740,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &817313871
@@ -5369,6 +5361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &935198721
@@ -5709,6 +5704,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1018499691
@@ -5861,6 +5859,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1127623826
@@ -6199,6 +6200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 3
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1287635388
@@ -7284,6 +7288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1523958772
@@ -7529,6 +7536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1563685425
@@ -7774,6 +7784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1578434758
@@ -7987,6 +8000,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1653453288
@@ -8139,6 +8155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1679580495
@@ -8386,6 +8405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1721904723
@@ -9781,6 +9803,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &1965100559
@@ -10584,6 +10609,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &2053688055
@@ -10922,6 +10950,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &2088162566
@@ -11167,6 +11198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &2108052734
@@ -11412,6 +11446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1 &2137658193
@@ -11564,6 +11601,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e3a205dfdc264893041c649621e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
+  emotion: 0
+  dialog: 
+  audioClip: {fileID: 0}
   collected: 0
   active: 0
 --- !u!1660057539 &9223372036854775807
