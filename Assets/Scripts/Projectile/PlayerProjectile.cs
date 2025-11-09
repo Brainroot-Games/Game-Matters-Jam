@@ -11,6 +11,15 @@ public class PlayerProjectile : Projectile
         targetTag = TagHandle.GetExistingTag("Enemy");
     }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (Utils.IsOutsideBounds(rb.position))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     protected override void OnTarget(GameObject target)
     {
         Enemy enemy = target.GetComponent<Enemy>();

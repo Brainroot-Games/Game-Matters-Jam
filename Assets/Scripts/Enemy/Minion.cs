@@ -9,12 +9,18 @@ public class Minion : Enemy
     protected override void Start()
     {
         base.Start();
+        SetSprite();
         StartCoroutine(UpdateTarget());
     }
 
     protected override int SameEmotionDamage(int damage)
     {
         return currentLife;
+    }
+
+    private void SetSprite()
+    {
+        spriteRenderer.sprite = SpriteManager.Instance.sprites[(int)Emotion];
     }
 
     private IEnumerator UpdateTarget()

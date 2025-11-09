@@ -11,6 +11,10 @@ public class LevelMove : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            if (EmotionPowerManager.Instance.AreAllPowersCollected())
+            {
+                levelName = MapManager.Instance.bossLevel;
+            }
             print("Cambio Livello a " + levelName);
 
             levelName.SetActive(true);

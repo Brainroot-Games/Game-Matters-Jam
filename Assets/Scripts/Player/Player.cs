@@ -28,8 +28,7 @@ public class Player : MonoBehaviour
         currentLife -= damage;
         if (currentLife <= 0)
         {
-            gameObject.SetActive(false);
-            // Handle player death (e.g., reload scene, show game over screen)
+            Application.Quit();
         }
     }
 }

@@ -12,7 +12,7 @@ public abstract class Enemy : MonoBehaviour
     protected Vector3 targetPosition;
     protected GameObject player;
 
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
 
     public Emotion Emotion { get; set; } = Emotion.Impulse;
 
@@ -22,7 +22,6 @@ public abstract class Enemy : MonoBehaviour
         currentLife = maxLife;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
-        SetColor();
     }
 
     // Update is called once per frame
@@ -30,11 +29,6 @@ public abstract class Enemy : MonoBehaviour
     {
         targetPosition.z = -1;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-    }
-
-    protected void SetColor()
-    {
-        spriteRenderer.color = GetColor(Emotion);
     }
 
     public virtual void GetDamage(int damage, Emotion damageEmotion)
