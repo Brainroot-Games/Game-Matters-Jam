@@ -19,9 +19,9 @@ public class EmotionPower : MonoBehaviour
 
             EmotionPowerManager.Instance.CollectEmotionPower(emotion);
             // dialog
-            AudioManager.Instance.PlayClusterAudio((int)emotion);
+            AudioManager.Instance.PlayAudioClip((int)emotion);
 
-            gameObject.SetActive(false);
+            gameObject.GetComponent<SpriteRenderer>().gameObject.SetActive(false);
         }
     }
 }
