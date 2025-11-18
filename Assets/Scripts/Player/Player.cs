@@ -3,9 +3,10 @@ using static Emotions;
 
 public class Player : MonoBehaviour
 {
-    public int maxLife = 100;
-
-    private int currentLife;
+    private const int maxLife = 100;
+    private const int minLife = 0;
+    public GameObject GameOverObj;
+    public static int currentLife;
     private PlayerController controller;
 
     public Emotion Emotion { get; set; } = Emotion.Impulse;
@@ -17,18 +18,20 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void GetDamage(int damage)
     {
-        currentLife -= damage;
+        currentLife = Mathf.Clamp(currentLife - damage, minLife, maxLife);
         if (currentLife <= 0)
         {
-            Application.Quit();
+            EnableGameOver();
         }
+    }
+
+    private void EnableGameOver()
+    {
+        MapManager.gameOver = true;
+        controller.enabled = false;
+        MapManager.Instance.DisableLifeObj();
+        GameOverObj.SetActive(true);
     }
 }

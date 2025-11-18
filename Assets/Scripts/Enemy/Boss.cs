@@ -95,7 +95,7 @@ public class Boss : Enemy
         MapManager.Instance.StartCoroutine(MapManager.Instance.Wait(7f));
     }
 
-    private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds) {
+    private IEnumerator EnableForSeconds(GameObject obj, float seconds) {
         obj.SetActive(true);
 
         // Pause the game

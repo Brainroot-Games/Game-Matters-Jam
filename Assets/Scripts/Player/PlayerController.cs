@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Emotions;
@@ -21,12 +20,6 @@ public class PlayerController : MonoBehaviour
     {
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void FixedUpdate()
@@ -58,7 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         if (System.Enum.TryParse<Emotion>(context.control.name, out var emotion))
         {
-            if (EmotionPowerManager.Instance.activePowers[(int)emotion])
+            if (EmotionPowerManager.activePowers[(int)emotion])
                 player.Emotion = emotion;
         }
     }

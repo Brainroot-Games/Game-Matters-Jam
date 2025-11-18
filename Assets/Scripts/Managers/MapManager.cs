@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the brain-shaped map containing color-coded clusters and circular sub-dungeons
@@ -11,6 +11,9 @@ public class MapManager : MonoBehaviour {
     public GameObject bossLevel;
     public GameObject bossStart;
     public GameObject credits;
+    public GameObject currentLifeObj;
+    public Text currentLifeText;
+    public static bool gameOver = false;
 
     public static MapManager Instance { get; private set; }
 
@@ -25,7 +28,15 @@ public class MapManager : MonoBehaviour {
         }
     }
 
-    private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds)
+    private void Start() {
+        EnableLifeObj();
+    }
+
+    private void Update() {
+        ShowCurrentLife();
+    }
+
+    private IEnumerator EnableForSeconds(GameObject obj, float seconds)
     {
         obj.SetActive(true);
 
@@ -42,5 +53,26 @@ public class MapManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(seconds);
         Instance.StartCoroutine(EnableForSeconds(credits, 7f));
+    }
+
+    private void ShowCurrentLife()
+    {
+        currentLifeText.text = Player.currentLife.ToString();
+    }
+
+    private void EnableLifeObj()
+    {
+        if (currentLifeObj == null) {
+            Debug.LogWarning("Current life object is not assigned in MapManager.");
+            return;
+        }
+        currentLifeText = currentLifeObj.GetComponentInChildren<Text>();
+        currentLifeObj.SetActive(true);
+    }
+
+    public void DisableLifeObj()
+    {
+        if (gameOver)
+            currentLifeObj.SetActive(false);
     }
 }

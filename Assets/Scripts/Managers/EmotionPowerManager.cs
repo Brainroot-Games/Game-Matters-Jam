@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EmotionPowerManager : MonoBehaviour
 {
-    public bool[] activePowers = new bool[6];
+    public static bool[] activePowers = new bool[6];
     public GameObject startObj;
     [SerializeField] private float secondsToWait = 7f;
 
