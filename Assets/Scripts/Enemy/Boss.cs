@@ -7,30 +7,29 @@ public class Boss : Enemy
     public float emotionTime = 3f;
     public float roamTime = 5f;
     public float attackTime = 2f;
-    public float specialAttackTime = 20f;
-    public int specialAttackCount = 5;
-    public float specialAttackRadius = 1.5f;
+    public float shieldTime = 20f;
+    public int shieldCount = 5;
+    public float shieldRadius = 1.5f;
     public GameObject bossObjDeath;
+
+    private ArrayList projectiles;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
+
+        projectiles = new ArrayList(shieldCount);
+
         StartCoroutine(ChangeEmotion());
         StartCoroutine(Roam());
         StartCoroutine(Attack());
-        StartCoroutine(SpecialAttack());
+        StartCoroutine(Shield());
     }
 
     protected override int SameEmotionDamage(int damage)
     {
         return damage * 2;
-    }
-
-
-    private void SetColor()
-    {
-        spriteRenderer.color = GetColor(Emotion);
     }
 
     private IEnumerator ChangeEmotion()
@@ -43,7 +42,14 @@ public class Boss : Enemy
                 newEmotion = (Emotion)Random.Range(1, 6);
             } while (newEmotion.Equals(Emotion));
             Emotion = newEmotion;
-            SetColor();
+
+            foreach (EnemyProjectile projectile in projectiles)
+            {
+                if (projectile != null)
+                {
+                    projectile.SetEmotion(Emotion);
+                }
+            }
 
             yield return new WaitForSeconds(emotionTime);
         }
@@ -65,28 +71,30 @@ public class Boss : Enemy
             EnemyProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity)
                 .GetComponent<EnemyProjectile>();
             projectile.Emotion = Emotion;
-            projectile.Direction = (player.transform.position - projectile.transform.position).normalized;
+            projectile.Direction = ((Vector2)player.transform.position -
+                (Vector2)projectile.transform.position).normalized;
 
             yield return new WaitForSeconds(attackTime);
         }
     }
 
-    private IEnumerator SpecialAttack()
+    private IEnumerator Shield()
     {
         while (true)
         {
-            for (int i = 0; i < specialAttackCount; i ++)
+            for (int i = 0; i < shieldCount; i ++)
             {
-                float angleRad = i * (360f / specialAttackCount) * Mathf.Deg2Rad;
-                Vector2 spawnOffset = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * specialAttackRadius;
+                float angleRad = i * (360f / shieldCount) * Mathf.Deg2Rad;
+                Vector2 spawnOffset = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * shieldRadius;
                 Vector2 spawnPosition = (Vector2)transform.position + spawnOffset;
                 EnemyProjectile projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity, transform)
                     .GetComponent<EnemyProjectile>();
                 projectile.Emotion = Emotion;
                 projectile.Rotate(transform);
+                projectiles.Add(projectile);
             }
 
-            yield return new WaitForSeconds(specialAttackTime);
+            yield return new WaitForSeconds(shieldTime);
         }
     }
 

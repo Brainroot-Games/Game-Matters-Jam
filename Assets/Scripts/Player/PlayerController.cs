@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
                 .GetComponent<PlayerProjectile>();
             projectile.Emotion = player.Emotion;
             projectile.Direction =
-                (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - projectile.transform.position).normalized;
+                ((Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) -
+                (Vector2)projectile.transform.position).normalized;
 
             StartCoroutine(AttackCooldown());
         }

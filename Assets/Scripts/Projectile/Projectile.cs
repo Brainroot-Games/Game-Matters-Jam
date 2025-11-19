@@ -4,7 +4,7 @@ using static Emotions;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Projectile : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 7f;
     public int damage = 10;
     public TagHandle targetTag;
 
@@ -28,6 +28,12 @@ public abstract class Projectile : MonoBehaviour
         rb.MovePosition(newPosition);
     }
 
+    public void SetEmotion(Emotion emotion)
+    {
+        Emotion = emotion;
+        spriteRenderer.color = GetColor(Emotion);
+    }
+
     protected abstract void OnTarget(GameObject target);
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -42,7 +48,6 @@ public abstract class Projectile : MonoBehaviour
             if (!otherProjectile.GetType().IsEquivalentTo(GetType()))
             {
                 if (otherProjectile.Emotion.Equals(Emotion) ||
-                    otherProjectile.Emotion.Equals(Emotion.Impulse) ||
                     Emotion.Equals(Emotion.Impulse))
                 {
                     Destroy(gameObject);

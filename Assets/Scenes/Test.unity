@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5480249248478976839, guid: e14c6e169137a53408fb8299fc7410dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -329,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2128560932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   minCount: 1
   maxCount: 5
+  spawnRadius: 8
   enemyPrefab: {fileID: 2357415530235506350, guid: c6b4cbcf75268334b961efb4b17a3542, type: 3}
 --- !u!4 &2128560933
 Transform:
