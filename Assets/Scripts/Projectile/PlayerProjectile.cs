@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using static Emotions;
 
 public class PlayerProjectile : Projectile
@@ -23,7 +22,7 @@ public class PlayerProjectile : Projectile
     protected override void OnTarget(GameObject target)
     {
         Enemy enemy = target.GetComponent<Enemy>();
-        if (enemy.Emotion.Equals(Emotion) || Emotion.Equals(Emotion.Impulse))
+        if (enemy.Emotion.Equals(Emotion) || Emotion.Equals(Emotion.Neutral))
         {
             enemy.GetDamage(damage, Emotion);
             Destroy(gameObject);

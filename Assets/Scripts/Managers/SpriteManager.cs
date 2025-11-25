@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class SpriteManager : MonoBehaviour
 {
-    [SerializeField]
-    public Sprite[] sprites = new Sprite[6];
+    public List<Sprite> projectileSprites;
+    public List<Sprite> minionSprites;
+    public List<Sprite> bossSprites;
 
     public static SpriteManager Instance { get; private set; }
 

@@ -14,13 +14,14 @@ public abstract class Enemy : MonoBehaviour
 
     protected SpriteRenderer spriteRenderer;
 
-    public Emotion Emotion { get; set; } = Emotion.Impulse;
+    public Emotion Emotion { get; set; } = Emotion.Neutral;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
         currentLife = maxLife;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        SetSprite();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -47,6 +48,8 @@ public abstract class Enemy : MonoBehaviour
     }
 
     protected abstract int SameEmotionDamage(int damage);
+
+    protected abstract void SetSprite();
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {

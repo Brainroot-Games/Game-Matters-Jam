@@ -79,4 +79,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectile
   speed: 6
   damage: 10
+  sprites:
+  - {fileID: 8764896851905284372, guid: 555410a26a7eec6439c6bd93aaa10d12, type: 3}
+  - {fileID: -983999004886603890, guid: 9ba110f4e3b3b0844818fc9b0b8f2df2, type: 3}
+  - {fileID: -4957223389846899974, guid: 6a5aed9608f11d249b83e46894650955, type: 3}
+  - {fileID: -144047618809615468, guid: 0643323b88c713947969689119ae38e6, type: 3}
+  - {fileID: 3525570089363215936, guid: 07aa7efe32511824fab680ec530f9337, type: 3}
+  - {fileID: -4956321670485080982, guid: 829bd8453a29cf74681d926b8f2c6dcb, type: 3}
   angularSpeed: 100

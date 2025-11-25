@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public static int currentLife;
     private PlayerController controller;
 
-    public Emotion Emotion { get; set; } = Emotion.Impulse;
+    public Emotion Emotion { get; set; } = Emotion.Neutral;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

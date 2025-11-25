@@ -9,7 +9,6 @@ public class Minion : Enemy
     protected override void Start()
     {
         base.Start();
-        SetSprite();
         StartCoroutine(UpdateTarget());
     }
 
@@ -18,9 +17,9 @@ public class Minion : Enemy
         return currentLife;
     }
 
-    private void SetSprite()
+    protected override void SetSprite()
     {
-        spriteRenderer.sprite = SpriteManager.Instance.sprites[(int)Emotion];
+        spriteRenderer.sprite = SpriteManager.Instance.minionSprites[(int)Emotion];
     }
 
     private IEnumerator UpdateTarget()

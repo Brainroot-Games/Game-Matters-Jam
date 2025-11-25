@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnReset(InputAction.CallbackContext context)
     {
-        player.Emotion = Emotion.Impulse;
+        player.Emotion = Emotion.Neutral;
     }
 
     private IEnumerator AttackCooldown()

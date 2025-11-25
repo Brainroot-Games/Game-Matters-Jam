@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] emotionAudioTracks = new AudioClip[6];
     
     [Header("Track Names (for reference)")]
-    [SerializeField] private string[] trackNames = new string[] { "neutro", "rabbia", "tristezza", "disgusto", "gioia", "paura"};
+    [SerializeField] private string[] trackNames = new string[] { "neutro", "gioia", "tristezza", "rabbia", "paura", "disgusto"};
 
     [Header("Audio Mixing Settings")]
     [SerializeField] private float baseTrackVolume = 1.0f;

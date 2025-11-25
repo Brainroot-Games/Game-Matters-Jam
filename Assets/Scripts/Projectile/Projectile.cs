@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static Emotions;
 
@@ -11,7 +12,7 @@ public abstract class Projectile : MonoBehaviour
     protected Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 
-    public Emotion Emotion { get; set; } = Emotion.Impulse;
+    public Emotion Emotion { get; set; } = Emotion.Neutral;
     public Vector2 Direction { get; set; } = Vector2.zero;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +20,7 @@ public abstract class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer.color = GetColor(Emotion);
+        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[(int)Emotion];
     }
 
     protected virtual void FixedUpdate()
@@ -31,7 +32,7 @@ public abstract class Projectile : MonoBehaviour
     public void SetEmotion(Emotion emotion)
     {
         Emotion = emotion;
-        spriteRenderer.color = GetColor(Emotion);
+        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[(int)Emotion];
     }
 
     protected abstract void OnTarget(GameObject target);
@@ -48,7 +49,7 @@ public abstract class Projectile : MonoBehaviour
             if (!otherProjectile.GetType().IsEquivalentTo(GetType()))
             {
                 if (otherProjectile.Emotion.Equals(Emotion) ||
-                    Emotion.Equals(Emotion.Impulse))
+                    Emotion.Equals(Emotion.Neutral))
                 {
                     Destroy(gameObject);
                 }

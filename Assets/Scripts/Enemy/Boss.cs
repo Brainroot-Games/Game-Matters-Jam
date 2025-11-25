@@ -1,9 +1,17 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static Emotions;
 
 public class Boss : Enemy
 {
+    private enum Phase
+    {
+        Phase1,
+        Phase2,
+        Phase3
+    }
+
     public float emotionTime = 3f;
     public float roamTime = 5f;
     public float attackTime = 2f;
@@ -12,6 +20,13 @@ public class Boss : Enemy
     public float shieldRadius = 1.5f;
     public GameObject bossObjDeath;
 
+    private Phase currentPhase = Phase.Phase1;
+    private Dictionary<Phase, int> phaseThresholds = new Dictionary<Phase, int>()
+    {
+        { Phase.Phase1, 120 },
+        { Phase.Phase2, 70 },
+        { Phase.Phase3, 0 }
+    };
     private ArrayList projectiles;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,9 +42,29 @@ public class Boss : Enemy
         StartCoroutine(Shield());
     }
 
+    public override void GetDamage(int damage, Emotion damageEmotion)
+    {
+        base.GetDamage(damage, damageEmotion);
+        if (currentLife <= phaseThresholds[currentPhase] && currentPhase != Phase.Phase3)
+        {
+            ChangePhase();
+        }
+    }
+
     protected override int SameEmotionDamage(int damage)
     {
         return damage * 2;
+    }
+
+    protected override void SetSprite()
+    {
+        spriteRenderer.sprite = SpriteManager.Instance.bossSprites[(int)currentPhase];
+    }
+
+    private void ChangePhase()
+    {
+        currentPhase++;
+        SetSprite();
     }
 
     private IEnumerator ChangeEmotion()

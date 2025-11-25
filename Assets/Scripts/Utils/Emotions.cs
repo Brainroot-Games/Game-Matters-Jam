@@ -5,22 +5,22 @@ public static class Emotions
 {
     public enum Emotion
     {
-        Impulse,
-        Anger,
-        Sadness,
-        Disgust,
+        Neutral,
         Joy,
-        Fear
+        Sadness,
+        Anger,
+        Fear,
+        Disgust
     }
 
     private static readonly Dictionary<Emotion, Color> EmotionColors = new Dictionary<Emotion, Color>()
     {
-        { Emotion.Impulse, Color.white },
-        { Emotion.Anger, Color.red },
-        { Emotion.Sadness, Color.blue },
-        { Emotion.Disgust, Color.green },
+        { Emotion.Neutral, Color.white },
         { Emotion.Joy, Color.yellow },
-        { Emotion.Fear, Color.purple }
+        { Emotion.Sadness, Color.blue },
+        { Emotion.Anger, Color.red },
+        { Emotion.Fear, Color.purple },
+        { Emotion.Disgust, Color.green }
     };
 
     public static Color GetColor(Emotion emotion)
