@@ -1010,7 +1010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -46}
+  m_AnchoredPosition: {x: 1, y: -40}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &104730600
@@ -4298,7 +4298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -86}
+  m_AnchoredPosition: {x: 1, y: -160}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617787156
@@ -4334,7 +4334,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3 - Disgust
+  m_Text: 5 - Disgust
 --- !u!222 &617787157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6097,11 +6097,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1721991426}
-  - {fileID: 104730599}
-  - {fileID: 617787155}
   - {fileID: 1243854865}
+  - {fileID: 104730599}
+  - {fileID: 1721991426}
   - {fileID: 2141453252}
+  - {fileID: 617787155}
   - {fileID: 375221703}
   m_Father: {fileID: 43767828}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7693,7 +7693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -126}
+  m_AnchoredPosition: {x: 1, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243854866
@@ -7729,7 +7729,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 4 - Joy
+  m_Text: 1 - Joy
 --- !u!222 &1243854867
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11155,7 +11155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -1}
+  m_AnchoredPosition: {x: 1, y: -80}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721991427
@@ -11191,7 +11191,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1 - Anger
+  m_Text: '3 - Anger
 
 '
 --- !u!222 &1721991428
@@ -12063,8 +12063,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1808661000}
+  - component: {fileID: 1808661001}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: GameManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12089,6 +12090,18 @@ Transform:
   - {fileID: 1953784693}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1808661001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808660999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5bfafa14af1f3478dbcb1b4e144731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1 &1821452497
 GameObject:
   m_ObjectHideFlags: 0
@@ -15112,7 +15125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -166}
+  m_AnchoredPosition: {x: 1, y: -120}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2141453253
@@ -15148,7 +15161,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5 - Fear
+  m_Text: 4 - Fear
 --- !u!222 &2141453254
 CanvasRenderer:
   m_ObjectHideFlags: 0
