@@ -23,7 +23,7 @@ public class EmotionPowerManager : MonoBehaviour
         }
     }
 
-    private void Start() => GameManager.Instance.StartEnableObjectForSecondsCoroutine(startObj, secondsToWait);
+    private void Start() => GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(startObj, secondsToWait);
     
     public void CollectEmotionPower(Emotions.Emotion emotion)
     {

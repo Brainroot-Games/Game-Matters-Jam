@@ -20,7 +20,7 @@ public class EmotionPower : MonoBehaviour {
             EmotionPowerManager.Instance.CollectEmotionPower(emotion);
             // dialog
             AudioManager.Instance.PlayAudioClip((int)emotion);
-            GameManager.Instance.StartEnableObjectForSecondsCoroutine(textToEnable, secondsToWait);
+            GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(textToEnable, secondsToWait);
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }

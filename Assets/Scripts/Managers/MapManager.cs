@@ -36,23 +36,10 @@ public class MapManager : MonoBehaviour {
         ShowCurrentLife();
     }
 
-    private IEnumerator EnableForSeconds(GameObject obj, float seconds)
-    {
-        obj.SetActive(true);
-
-        // Pause the game
-        Time.timeScale = 0f;
-
-        // Use WaitForSecondsRealtime to wait regardless of time scale
-        yield return new WaitForSecondsRealtime(seconds);
-
-        Application.Quit();
-    }
-
     public IEnumerator Wait(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        Instance.StartCoroutine(EnableForSeconds(credits, 7f));
+        GameManager.Instance.LaunchEnableForSecondsThenQuitCoroutine(credits, 7f);
     }
 
     private void ShowCurrentLife()
@@ -60,7 +47,7 @@ public class MapManager : MonoBehaviour {
         currentLifeText.text = Player.currentLife.ToString();
     }
 
-    private void EnableLifeObj()
+    public void EnableLifeObj()
     {
         if (currentLifeObj == null) {
             Debug.LogWarning("Current life object is not assigned in MapManager.");

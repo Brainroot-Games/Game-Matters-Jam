@@ -12,7 +12,7 @@ public class LevelMove : MonoBehaviour
             if (EmotionPowerManager.Instance.AreAllPowersCollected())
             {
                 levelName = MapManager.Instance.bossLevel;
-                GameManager.Instance.StartEnableObjectForSecondsCoroutine(MapManager.Instance.bossStart, 7f);
+                GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(MapManager.Instance.bossStart, 7f);
             }
             print("Cambio Livello a " + levelName);
 
