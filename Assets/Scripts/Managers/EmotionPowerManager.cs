@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EmotionPowerManager : MonoBehaviour
 {
-    public static bool[] activePowers = new bool[6];
+    public bool[] activePowers = new bool[6];
     public GameObject startObj;
     [SerializeField] private float secondsToWait = 7f;
 
@@ -14,7 +14,7 @@ public class EmotionPowerManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject.transform.parent);
         }
         else
         {
@@ -23,11 +23,8 @@ public class EmotionPowerManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        StartCoroutine(EnableForSeconds(startObj, secondsToWait));
-    }
-
+    private void Start() => GameManager.Instance.StartEnableObjectForSecondsCoroutine(startObj, secondsToWait);
+    
     public void CollectEmotionPower(Emotions.Emotion emotion)
     {
         int index = (int)emotion;
@@ -37,19 +34,6 @@ public class EmotionPowerManager : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds) {
-        obj.SetActive(true);
-
-        // Pause the game
-        Time.timeScale = 0f;
-
-        // Use WaitForSecondsRealtime to wait regardless of time scale
-        yield return new WaitForSecondsRealtime(seconds);
-
-        // Restore the original time scale
-        Time.timeScale = 1;
-        obj.SetActive(false);
-    }
     public bool AreAllPowersCollected()
     {
         foreach (bool power in activePowers)

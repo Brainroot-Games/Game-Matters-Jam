@@ -21,7 +21,7 @@ public class MapManager : MonoBehaviour {
         // Singleton pattern
         if (Instance == null) {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject.transform.parent);
         } else {
             Destroy(gameObject);
             return;

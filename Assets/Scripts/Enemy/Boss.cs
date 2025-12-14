@@ -142,7 +142,7 @@ public class Boss : Enemy
         obj.SetActive(true);
 
         // Pause the game
-        Time.timeScale = 0f;
+        GameManager.Instance.PauseGame();
 
         // Use WaitForSecondsRealtime to wait regardless of time scale
         yield return new WaitForSecondsRealtime(seconds);
