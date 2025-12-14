@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 /// <summary>
@@ -21,7 +22,7 @@ public class MapManager : MonoBehaviour {
         // Singleton pattern
         if (Instance == null) {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject.transform.parent);
         } else {
             Destroy(gameObject);
             return;
@@ -29,30 +30,17 @@ public class MapManager : MonoBehaviour {
     }
 
     private void Start() {
-        EnableLifeObj();
+        EnableLifeUI();
     }
 
     private void Update() {
         ShowCurrentLife();
     }
 
-    private IEnumerator EnableForSeconds(GameObject obj, float seconds)
-    {
-        obj.SetActive(true);
-
-        // Pause the game
-        Time.timeScale = 0f;
-
-        // Use WaitForSecondsRealtime to wait regardless of time scale
-        yield return new WaitForSecondsRealtime(seconds);
-
-        Application.Quit();
-    }
-
     public IEnumerator Wait(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        Instance.StartCoroutine(EnableForSeconds(credits, 7f));
+        GameManager.Instance.LaunchEnableForSecondsThenQuitCoroutine(credits, 7f);
     }
 
     private void ShowCurrentLife()
@@ -60,19 +48,15 @@ public class MapManager : MonoBehaviour {
         currentLifeText.text = Player.currentLife.ToString();
     }
 
-    private void EnableLifeObj()
+    public void EnableLifeUI()
     {
         if (currentLifeObj == null) {
             Debug.LogWarning("Current life object is not assigned in MapManager.");
             return;
         }
-        currentLifeText = currentLifeObj.GetComponentInChildren<Text>();
         currentLifeObj.SetActive(true);
+        currentLifeText = currentLifeObj.GetComponentInChildren<Text>();
     }
 
-    public void DisableLifeObj()
-    {
-        if (gameOver)
-            currentLifeObj.SetActive(false);
-    }
+    public void DisableLifeUI() => currentLifeObj.SetActive(false);
 }

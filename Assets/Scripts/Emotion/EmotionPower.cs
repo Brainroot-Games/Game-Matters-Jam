@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class EmotionPower : MonoBehaviour
-{
+public class EmotionPower : MonoBehaviour {
     public Emotions.Emotion emotion;
     public AudioClip audioClip;
     public GameObject textToEnable;
@@ -21,24 +20,8 @@ public class EmotionPower : MonoBehaviour
             EmotionPowerManager.Instance.CollectEmotionPower(emotion);
             // dialog
             AudioManager.Instance.PlayAudioClip((int)emotion);
-            StartCoroutine(EnableForSeconds(textToEnable, secondsToWait));
-            
+            GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(textToEnable, secondsToWait);
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-    }
-
-    private System.Collections.IEnumerator EnableForSeconds(GameObject obj, float seconds)
-    {
-        obj.SetActive(true);
-
-        // Pause the game
-        Time.timeScale = 0f;
-
-        // Use WaitForSecondsRealtime to wait regardless of time scale
-        yield return new WaitForSecondsRealtime(seconds);
-
-        // Restore the original time scale
-        Time.timeScale = 1;
-        obj.SetActive(false);
     }
 }

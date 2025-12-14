@@ -134,21 +134,7 @@ public class Boss : Enemy
     }
 
     private void OnDestroy() {
-        MapManager.Instance.StartCoroutine(EnableForSeconds(bossObjDeath, 7f));
+        GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(bossObjDeath, 7f);
         MapManager.Instance.StartCoroutine(MapManager.Instance.Wait(7f));
-    }
-
-    private IEnumerator EnableForSeconds(GameObject obj, float seconds) {
-        obj.SetActive(true);
-
-        // Pause the game
-        Time.timeScale = 0f;
-
-        // Use WaitForSecondsRealtime to wait regardless of time scale
-        yield return new WaitForSecondsRealtime(seconds);
-
-        // Restore the original time scale
-        Time.timeScale = 1;
-        obj.SetActive(false);
     }
 }

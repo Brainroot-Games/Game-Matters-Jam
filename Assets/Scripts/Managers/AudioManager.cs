@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject.transform.parent);
             
             // Get the base audio source component
             baseAudioSource = GetComponent<AudioSource>();

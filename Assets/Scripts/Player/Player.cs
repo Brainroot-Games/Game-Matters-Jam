@@ -5,7 +5,6 @@ public class Player : MonoBehaviour
 {
     private const int maxLife = 100;
     private const int minLife = 0;
-    public GameObject GameOverObj;
     public static int currentLife;
     private PlayerController controller;
 
@@ -30,8 +29,8 @@ public class Player : MonoBehaviour
     private void EnableGameOver()
     {
         MapManager.gameOver = true;
+        MapManager.Instance.DisableLifeUI();
         controller.enabled = false;
-        MapManager.Instance.DisableLifeObj();
-        GameOverObj.SetActive(true);
+        GameManager.EnableObject(GameManager.Instance.GameOverUI);
     }
 }
