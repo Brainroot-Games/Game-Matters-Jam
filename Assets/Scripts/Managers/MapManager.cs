@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 /// <summary>
@@ -29,7 +30,7 @@ public class MapManager : MonoBehaviour {
     }
 
     private void Start() {
-        EnableLifeObj();
+        EnableLifeUI();
     }
 
     private void Update() {
@@ -47,19 +48,15 @@ public class MapManager : MonoBehaviour {
         currentLifeText.text = Player.currentLife.ToString();
     }
 
-    public void EnableLifeObj()
+    public void EnableLifeUI()
     {
         if (currentLifeObj == null) {
             Debug.LogWarning("Current life object is not assigned in MapManager.");
             return;
         }
-        currentLifeText = currentLifeObj.GetComponentInChildren<Text>();
         currentLifeObj.SetActive(true);
+        currentLifeText = currentLifeObj.GetComponentInChildren<Text>();
     }
 
-    public void DisableLifeObj()
-    {
-        if (gameOver)
-            currentLifeObj.SetActive(false);
-    }
+    public void DisableLifeUI() => currentLifeObj.SetActive(false);
 }

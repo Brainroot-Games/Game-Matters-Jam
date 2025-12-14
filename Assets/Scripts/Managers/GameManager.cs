@@ -1,11 +1,15 @@
 using System;
 using System.Collections;
 using UnityEngine;
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+using UnityEngine.InputSystem;
+#endif
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
-    static bool isGamePaused = false;
+    public static bool isGamePaused = false;
     public GameObject pauseMenuUI;
+    public GameObject GameOverUI;
     public event Action OnPause;
     public event Action OnResume;
     public event Action OnEscapePressed;
@@ -22,55 +26,102 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        DisableObject(pauseMenuUI);
-    }
-
-    private void Update() {
-        if (isGamePaused) {
-            MapManager.Instance.DisableLifeObj();
-            } else {
-            MapManager.Instance.EnableLifeObj();
+        // Ensure pause menu is disabled at start (defensive in case inspector changed)
+        if (pauseMenuUI != null) {
+            DisableObject(pauseMenuUI);
         }
     }
 
-    public static bool IsPaused()  =>  isGamePaused;
+    private void Update() {
+        CheckEscapePressed();
 
-    public void PauseGame() {
+        // Handle life UI based on pause state (guard against missing MapManager)
+        if (MapManager.Instance != null) {
+            if (IsPaused()) {
+                MapManager.Instance.DisableLifeUI();
+            }
+            else {
+                MapManager.Instance.EnableLifeUI();
+            }
+        }
+    }
+
+    public static bool IsPaused() => isGamePaused;
+
+    public void PauseGame(bool isMenuPause) {
         if (IsPaused()) return;
-        
-        OnPause?.Invoke();
-        isGamePaused = true;
-        EnableObject(pauseMenuUI);
+
+        if (isMenuPause) {
+            OnPause?.Invoke();
+
+            if (pauseMenuUI != null) {
+                EnableObject(pauseMenuUI);
+            }
+        }
+
+        SetGamePaused();
         Time.timeScale = 0f;
     }
 
-    public void ResumeGame() {
+    public void ResumeGame(bool isMenuPause) {
         if (!IsPaused()) return;
 
-        OnResume?.Invoke();
-        isGamePaused = false;
-        DisableObject(pauseMenuUI);
+        if (isMenuPause) {
+            OnResume?.Invoke();
+
+            if (pauseMenuUI != null) {
+                DisableObject(pauseMenuUI);
+            }
+        }
+
+        UnsetGamePaused();
         Time.timeScale = 1f;
     }
-    
+
+    private void CheckEscapePressed() {
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+        // Use new Input System
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) {
+            OnEscapePressed?.Invoke();
+            if (IsPaused()) {
+                ResumeGame(true);
+            }
+            else {
+                PauseGame(true);
+            }
+        }
+#else
+        // Fallback to legacy Input
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            OnEscapePressed?.Invoke();
+            if (IsPaused()) {
+                ResumeGame();
+            }
+            else {
+                PauseGame();
+            }
+        }
+#endif
+    }
+
     private IEnumerator EnableObjectForSeconds(GameObject obj, float seconds) {
         EnableObject(obj);
 
         // Pause the game
-        PauseGame();
+        PauseGame(false);
 
         // Use WaitForSecondsRealtime to wait regardless of time scale
         yield return new WaitForSecondsRealtime(seconds);
 
         // Restore the original time scale
-        ResumeGame();
+        ResumeGame(false);
         DisableObject(obj);
     }
 
     private IEnumerator EnableForSecondsThenQuit(GameObject obj, float seconds) {
         EnableObject(obj);
 
-        PauseGame();
+        PauseGame(false);
 
         // Use WaitForSecondsRealtime to wait regardless of time scale
         yield return new WaitForSecondsRealtime(seconds);
@@ -86,22 +137,31 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(EnableForSecondsThenQuit(obj, seconds));
     }
 
-    private void ManagePauseGameByInput() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            OnEscapePressed?.Invoke();
-            if (isGamePaused) {
-                ResumeGame();
-            } else {
-                PauseGame();
-            }
+    public static void EnableObject(GameObject obj) {
+        if (obj != null) {
+            obj.SetActive(true);
         }
     }
 
-    private void EnableObject(GameObject obj) {
-        obj.SetActive(true);
+    public static void DisableObject(GameObject obj) {
+        if (obj != null) {
+            obj.SetActive(false);
+        }
     }
 
-    private void DisableObject(GameObject obj) {
-        obj.SetActive(false);
+    private void SetGamePaused() {
+        if (IsPaused()) return;
+
+        isGamePaused = true;
+    }
+
+    private void UnsetGamePaused() {
+        if (!IsPaused()) return;
+
+        isGamePaused = false;
+    }
+
+    public void QuitApp() {
+        Application.Quit();
     }
 }
