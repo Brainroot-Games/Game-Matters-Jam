@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - Projectile
   - Bounds
-  - Boss
   layers:
   - Default
   - TransparentFX
@@ -16,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - Bounds
   - Projectile
+  - Bounds
   - 
   - 
   - 

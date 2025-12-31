@@ -21,15 +21,6 @@ public class EnemyProjectile : Projectile
         }
     }
 
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        if (rotationCenter == null && Utils.IsOutsideBounds(rb.position))
-        {
-            Destroy(gameObject);
-        }
-    }
-
     public void Rotate(Transform center)
     {
         rotationCenter = center;
@@ -40,5 +31,13 @@ public class EnemyProjectile : Projectile
         Player player = target.GetComponent<Player>();
         player.GetDamage(damage);
         Destroy(gameObject);
+    }
+
+    protected override void OnTriggerEnter2DBounds(Collider2D other)
+    {
+        if (rotationCenter == null)
+        {
+            Destroy(gameObject);
+        }
     }
 }

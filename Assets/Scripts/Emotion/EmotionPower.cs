@@ -1,7 +1,9 @@
 using UnityEngine;
+using static Emotions;
 
+[RequireComponent(typeof(Collider2D))]
 public class EmotionPower : MonoBehaviour {
-    public Emotions.Emotion emotion;
+    public Emotion emotion;
     public AudioClip audioClip;
     public GameObject textToEnable;
     [SerializeField] private float secondsToWait = 7f;
@@ -9,16 +11,14 @@ public class EmotionPower : MonoBehaviour {
     public bool collected = false;
     public bool active = false;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player") && !collected)
+        if (other.CompareTag("Player") && !collected)
         {
             collected = true;
             active = true;
-            Debug.Log("Emotion Power Collected! Player abilities enhanced.");
 
             EmotionPowerManager.Instance.CollectEmotionPower(emotion);
-            // dialog
             AudioManager.Instance.PlayAudioClip((int)emotion);
             GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(textToEnable, secondsToWait);
             gameObject.GetComponent<SpriteRenderer>().enabled = false;

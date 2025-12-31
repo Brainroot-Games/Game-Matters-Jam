@@ -26,18 +26,13 @@ public class Minion : Enemy
     {
         while (true)
         {
-            targetPosition = player.transform.position;
+            targetPosition = player.position;
             yield return new WaitForSeconds(updateTargetTime);
         }
     }
 
-    public override void OnTriggerEnter2D(Collider2D other)
+    protected override void OnCollisionEnter2DPlayer(Player player)
     {
-        base.OnTriggerEnter2D(other);
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

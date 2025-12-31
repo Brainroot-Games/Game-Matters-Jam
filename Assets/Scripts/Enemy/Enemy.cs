@@ -1,35 +1,42 @@
 using UnityEngine;
 using static Emotions;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class Enemy : MonoBehaviour
 {
     public int maxLife = 30;
     public int damage = 20;
     public float speed = 2.0f;
+    public float stopAt = 0.1f;
+    private float sqrStopAt;
     public GameObject projectilePrefab;
 
     protected int currentLife;
-    protected Vector3 targetPosition;
-    protected GameObject player;
+    protected Vector2 targetPosition;
+    protected Transform player;
 
     protected SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
 
     public Emotion Emotion { get; set; } = Emotion.Neutral;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
+        sqrStopAt = stopAt * stopAt;
         currentLife = maxLife;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         SetSprite();
-        player = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        targetPosition.z = -1;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        Vector2 movement = targetPosition - (Vector2)transform.position;
+        rb.linearVelocity = (movement.sqrMagnitude > sqrStopAt) ?
+            movement.normalized * speed :
+            Vector2.zero;
     }
 
     public virtual void GetDamage(int damage, Emotion damageEmotion)
@@ -51,12 +58,16 @@ public abstract class Enemy : MonoBehaviour
 
     protected abstract void SetSprite();
 
-    public virtual void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnCollisionEnter2DPlayer(Player player)
     {
-        if (other.gameObject.CompareTag("Player"))
+        player.GetDamage(damage);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Player player = other.GetComponent<Player>();
-            player.GetDamage(damage);
+            OnCollisionEnter2DPlayer(collision.gameObject.GetComponent<Player>());
         }
     }
 }

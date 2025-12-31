@@ -1,26 +1,28 @@
 using UnityEngine;
 using static Emotions;
 
+[RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
 {
-    private const int maxLife = 100;
     private const int minLife = 0;
-    public static int currentLife;
+
+    public int maxLife = 100;
     private PlayerController controller;
 
+    public int CurrentLife { get; set; }
     public Emotion Emotion { get; set; } = Emotion.Neutral;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentLife = maxLife;
+        CurrentLife = maxLife;
         controller = GetComponent<PlayerController>();
     }
 
     public void GetDamage(int damage)
     {
-        currentLife = Mathf.Clamp(currentLife - damage, minLife, maxLife);
-        if (currentLife <= 0)
+        CurrentLife = Mathf.Clamp(CurrentLife - damage, minLife, maxLife);
+        if (CurrentLife == minLife)
         {
             EnableGameOver();
         }

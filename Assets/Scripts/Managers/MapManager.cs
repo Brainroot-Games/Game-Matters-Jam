@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 /// <summary>
@@ -16,6 +15,8 @@ public class MapManager : MonoBehaviour {
     public Text currentLifeText;
     public static bool gameOver = false;
 
+    private Player player;
+
     public static MapManager Instance { get; private set; }
 
     private void Awake() {
@@ -30,6 +31,8 @@ public class MapManager : MonoBehaviour {
     }
 
     private void Start() {
+        player = FindAnyObjectByType<Player>();
+
         EnableLifeUI();
     }
 
@@ -45,7 +48,7 @@ public class MapManager : MonoBehaviour {
 
     private void ShowCurrentLife()
     {
-        currentLifeText.text = Player.currentLife.ToString();
+        currentLifeText.text = player.CurrentLife.ToString();
     }
 
     public void EnableLifeUI()

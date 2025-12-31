@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using static Emotions;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Player))]
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f;
@@ -24,8 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 newPosition = rb.position + movement * speed * Time.deltaTime;
-        rb.MovePosition(Utils.ClampToBounds(newPosition));
+        rb.linearVelocity = movement * speed;
     }
 
     public void OnMove(InputAction.CallbackContext context)

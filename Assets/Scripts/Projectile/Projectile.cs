@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using static Emotions;
 
@@ -23,9 +22,9 @@ public abstract class Projectile : MonoBehaviour
         spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[(int)Emotion];
     }
 
-    protected virtual void FixedUpdate()
+    private void FixedUpdate()
     {
-        Vector2 newPosition = rb.position + Direction * speed * Time.deltaTime;
+        Vector2 newPosition = rb.position + speed * Time.deltaTime * Direction;
         rb.MovePosition(newPosition);
     }
 
@@ -37,13 +36,18 @@ public abstract class Projectile : MonoBehaviour
 
     protected abstract void OnTarget(GameObject target);
 
+    protected virtual void OnTriggerEnter2DBounds(Collider2D other)
+    {
+        Destroy(gameObject);
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(targetTag))
+        if (other.CompareTag(targetTag))
         {
             OnTarget(other.gameObject);
         }
-        else if (other.gameObject.CompareTag("Projectile"))
+        else if (other.CompareTag("Projectile"))
         {
             Projectile otherProjectile = other.GetComponent<Projectile>();
             if (!otherProjectile.GetType().IsEquivalentTo(GetType()))
@@ -54,6 +58,10 @@ public abstract class Projectile : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
+        }
+        else if (other.CompareTag("Bounds"))
+        {
+            OnTriggerEnter2DBounds(other);
         }
     }
 }

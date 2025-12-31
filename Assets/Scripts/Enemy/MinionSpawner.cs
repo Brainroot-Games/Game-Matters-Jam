@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using static Emotions;
 
@@ -6,7 +5,7 @@ public class MinionSpawner : MonoBehaviour
 {
     public int minCount = 1;
     public int maxCount = 5;
-    public float spawnRadius = 8f;
+    public float spawnRadius = 4f;
 
     public GameObject minionPrefab;
 
@@ -17,10 +16,15 @@ public class MinionSpawner : MonoBehaviour
 
         for (int i = 0; i < minionCount; i++)
         {
-            Vector3 spawnPosition = Random.insideUnitCircle * spawnRadius;
-            spawnPosition.z = -1;
+            Vector2 spawnPosition = (Vector2)transform.position + Random.insideUnitCircle * spawnRadius;
             GameObject minion = Instantiate(minionPrefab, spawnPosition, Quaternion.identity, transform);
             minion.GetComponent<Minion>().Emotion = (Emotion)Random.Range(1, 6);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        UnityEditor.Handles.color = Color.red;
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, spawnRadius);
     }
 }
