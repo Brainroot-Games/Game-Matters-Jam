@@ -5216,7 +5216,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -5245,7 +5245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
   emotion: 4
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 24f8c3dbd653e284fb24f05d50a73e8b, type: 3}
   textToEnable: {fileID: 1024185306}
   secondsToWait: 5
   collected: 0
@@ -7438,7 +7438,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -7467,7 +7467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
   emotion: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 6eb8663fb64b7cc42b4b1f90667c6de9, type: 3}
   textToEnable: {fileID: 385027458}
   secondsToWait: 5
   collected: 0
@@ -8293,7 +8293,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -8322,7 +8322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
   emotion: 5
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 11738727fc238644aaf219a4d5b91b93, type: 3}
   textToEnable: {fileID: 109007199}
   secondsToWait: 5
   collected: 0
@@ -10050,7 +10050,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -10079,7 +10079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
   emotion: 3
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 40002958174f3c64cb598c520d152209, type: 3}
   textToEnable: {fileID: 2126927354}
   secondsToWait: 5
   collected: 0
@@ -11291,7 +11291,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -11320,7 +11320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmotionPower
   emotion: 1
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 064f1765d8163f94db81a635462c99c9, type: 3}
   textToEnable: {fileID: 498126075}
   secondsToWait: 5
   collected: 0
@@ -11342,7 +11342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1720821164
 MonoBehaviour:
   m_ObjectHideFlags: 0

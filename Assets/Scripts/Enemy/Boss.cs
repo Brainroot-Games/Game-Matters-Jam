@@ -22,7 +22,7 @@ public class Boss : Enemy
     public GameObject bossObjDeath;
 
     private ArrayList projectiles;
-    private Vector2 neuronCenter;
+    private Vector2 neuronCenter = Vector2.zero;
     private Phase currentPhase = Phase.Phase1;
     private readonly Dictionary<Phase, int> phaseThresholds = new Dictionary<Phase, int>()
     {
@@ -146,9 +146,9 @@ public class Boss : Enemy
 
     private void OnDrawGizmos()
     {
-        UnityEditor.Handles.color = Color.blue;
+        UnityEditor.Handles.color = Color.blueViolet;
         UnityEditor.Handles.DrawWireDisc(neuronCenter, Vector3.forward, roamRadius);
-        UnityEditor.Handles.color = Color.green;
+        UnityEditor.Handles.color = Color.blue;
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, shieldRadius);
     }
 }

@@ -33,6 +33,7 @@ public class Minion : Enemy
 
     protected override void OnCollisionEnter2DPlayer(Player player)
     {
+        base.OnCollisionEnter2DPlayer(player);
         Destroy(gameObject);
     }
 }
