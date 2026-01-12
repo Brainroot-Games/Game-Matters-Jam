@@ -24,8 +24,7 @@ public abstract class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 newPosition = rb.position + speed * Time.deltaTime * Direction;
-        rb.MovePosition(newPosition);
+        Move();
     }
 
     public void SetEmotion(Emotion emotion)
@@ -34,9 +33,15 @@ public abstract class Projectile : MonoBehaviour
         spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[(int)Emotion];
     }
 
-    protected abstract void OnTarget(GameObject target);
+    protected virtual void Move()
+    {
+        Vector2 newPosition = rb.position + speed * Time.deltaTime * Direction;
+        rb.MovePosition(newPosition);
+    }
 
-    protected virtual void OnTriggerEnter2DBounds(Collider2D other)
+    protected abstract void OnTargetTriggerEnter(GameObject target);
+
+    protected virtual void OnBoundsTriggerEnter(Collider2D other)
     {
         Destroy(gameObject);
     }
@@ -45,7 +50,7 @@ public abstract class Projectile : MonoBehaviour
     {
         if (other.CompareTag(targetTag))
         {
-            OnTarget(other.gameObject);
+            OnTargetTriggerEnter(other.gameObject);
         }
         else if (other.CompareTag("Projectile"))
         {
@@ -61,7 +66,7 @@ public abstract class Projectile : MonoBehaviour
         }
         else if (other.CompareTag("Bounds"))
         {
-            OnTriggerEnter2DBounds(other);
+            OnBoundsTriggerEnter(other);
         }
     }
 }

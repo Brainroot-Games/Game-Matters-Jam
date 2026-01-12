@@ -26,14 +26,22 @@ public class EnemyProjectile : Projectile
         rotationCenter = center;
     }
 
-    protected override void OnTarget(GameObject target)
+    protected override void Move()
+    {
+        if (rotationCenter == null)
+        {
+            base.Move();
+        }
+    }
+
+    protected override void OnTargetTriggerEnter(GameObject target)
     {
         Player player = target.GetComponent<Player>();
         player.GetDamage(damage);
         Destroy(gameObject);
     }
 
-    protected override void OnTriggerEnter2DBounds(Collider2D other)
+    protected override void OnBoundsTriggerEnter(Collider2D other)
     {
         if (rotationCenter == null)
         {

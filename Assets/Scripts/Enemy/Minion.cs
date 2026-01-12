@@ -1,17 +1,5 @@
-using System.Collections;
-using UnityEngine;
-
 public class Minion : Enemy
 {
-    public float updateTargetTime = 1f;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected override void Start()
-    {
-        base.Start();
-        StartCoroutine(UpdateTarget());
-    }
-
     protected override int SameEmotionDamage(int damage)
     {
         return currentLife;
@@ -22,18 +10,15 @@ public class Minion : Enemy
         spriteRenderer.sprite = SpriteManager.Instance.minionSprites[(int)Emotion];
     }
 
-    private IEnumerator UpdateTarget()
+    protected override void Move()
     {
-        while (true)
-        {
-            targetPosition = player.position;
-            yield return new WaitForSeconds(updateTargetTime);
-        }
+        targetPosition = player.position;
+        base.Move();
     }
 
-    protected override void OnCollisionEnter2DPlayer(Player player)
+    protected override void OnPlayerCollisionEnter(Player player)
     {
-        base.OnCollisionEnter2DPlayer(player);
+        base.OnPlayerCollisionEnter(player);
         Destroy(gameObject);
     }
 }

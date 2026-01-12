@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = movement * speed;
+        Vector2 newPosition = rb.position + speed * Time.deltaTime * movement;
+        rb.MovePosition(newPosition);
     }
 
     public void OnMove(InputAction.CallbackContext context)

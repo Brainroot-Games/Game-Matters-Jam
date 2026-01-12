@@ -10,7 +10,7 @@ public class PlayerProjectile : Projectile
         targetTag = TagHandle.GetExistingTag("Enemy");
     }
 
-    protected override void OnTarget(GameObject target)
+    protected override void OnTargetTriggerEnter(GameObject target)
     {
         Enemy enemy = target.GetComponent<Enemy>();
         if (enemy.Emotion.Equals(Emotion) || Emotion.Equals(Emotion.Neutral))
