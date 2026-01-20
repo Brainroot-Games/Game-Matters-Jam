@@ -19,7 +19,7 @@ public class EmotionPower : MonoBehaviour {
             active = true;
 
             EmotionPowerManager.Instance.CollectEmotionPower(emotion);
-            AudioManager.Instance.PlayAudioClip((int)emotion);
+            AudioManager.Instance.PlayAudioClip(GetEmotionIndex(emotion));
             GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(textToEnable, secondsToWait);
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }

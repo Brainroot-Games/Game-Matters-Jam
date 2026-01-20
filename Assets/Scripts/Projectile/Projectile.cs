@@ -9,6 +9,8 @@ public abstract class Projectile : MonoBehaviour
     public TagHandle targetTag;
 
     protected Rigidbody2D rb;
+    protected Player player;
+
     private SpriteRenderer spriteRenderer;
 
     public Emotion Emotion { get; set; } = Emotion.Neutral;
@@ -18,8 +20,10 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[(int)Emotion];
+        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[GetEmotionIndex(Emotion)];
     }
 
     private void FixedUpdate()
@@ -30,7 +34,7 @@ public abstract class Projectile : MonoBehaviour
     public void SetEmotion(Emotion emotion)
     {
         Emotion = emotion;
-        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[(int)Emotion];
+        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[GetEmotionIndex(Emotion)];
     }
 
     protected virtual void Move()
@@ -48,6 +52,9 @@ public abstract class Projectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if (player.IsInSynapse)
+            return;
+
         if (other.CompareTag(targetTag))
         {
             OnTargetTriggerEnter(other.gameObject);

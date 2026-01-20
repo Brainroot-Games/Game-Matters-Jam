@@ -10,6 +10,11 @@ public class PlayerProjectile : Projectile
         targetTag = TagHandle.GetExistingTag("Enemy");
     }
 
+    private void OnDestroy()
+    {
+        player.RemoveProjectile(this);
+    }
+
     protected override void OnTargetTriggerEnter(GameObject target)
     {
         Enemy enemy = target.GetComponent<Enemy>();

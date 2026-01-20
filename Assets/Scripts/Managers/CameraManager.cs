@@ -2,19 +2,9 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public float moveTime = 1f;
-
     private Vector3 target;
     private Vector3 offset;
     private float speed = 0f;
-
-    public Vector3 Target {
-        get => target;
-        set {
-            target = value + offset;
-            speed = Vector2.Distance(transform.position, target) / moveTime;
-        }
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,11 +15,17 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (transform.position != Target)
+        if (transform.position != target)
         {
             transform.position = Vector3.MoveTowards(transform.position,
-                Target,
+                target,
                 speed * Time.deltaTime);
         }
+    }
+
+    public void MoveToTarget(Vector3 target, float moveTime)
+    {
+        this.target = target + offset;
+        speed = Utils.GetSpeed(transform.position, target, moveTime);
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class MapManager : MonoBehaviour {
 
+    public Neuron firstNeuron;
     public GameObject bossLevel;
     public GameObject bossStart;
     public GameObject credits;
@@ -16,6 +17,7 @@ public class MapManager : MonoBehaviour {
     public static bool gameOver = false;
 
     private Player player;
+    private Neuron currentNeuron;
 
     public static MapManager Instance { get; private set; }
 
@@ -23,7 +25,7 @@ public class MapManager : MonoBehaviour {
         // Singleton pattern
         if (Instance == null) {
             Instance = this;
-            DontDestroyOnLoad(gameObject.transform.parent);
+            DontDestroyOnLoad(transform.parent);
         } else {
             Destroy(gameObject);
             return;
@@ -31,7 +33,8 @@ public class MapManager : MonoBehaviour {
     }
 
     private void Start() {
-        player = FindAnyObjectByType<Player>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        currentNeuron = firstNeuron;
 
         EnableLifeUI();
     }
@@ -40,10 +43,11 @@ public class MapManager : MonoBehaviour {
         ShowCurrentLife();
     }
 
-    public IEnumerator Wait(float seconds)
+    public void ChangeNeuron(Neuron neuron)
     {
-        yield return new WaitForSeconds(seconds);
-        GameManager.Instance.LaunchEnableForSecondsThenQuitCoroutine(credits, 7f);
+        StartCoroutine(WaitWhilePlayerInSynapse(currentNeuron));
+        currentNeuron = neuron;
+        currentNeuron.SetSpawnerActive(true);
     }
 
     private void ShowCurrentLife()
@@ -62,4 +66,16 @@ public class MapManager : MonoBehaviour {
     }
 
     public void DisableLifeUI() => currentLifeObj.SetActive(false);
+
+    public IEnumerator Wait(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        GameManager.Instance.LaunchEnableForSecondsThenQuitCoroutine(credits, 7f);
+    }
+
+    private IEnumerator WaitWhilePlayerInSynapse(Neuron prevNeuron)
+    {
+        yield return new WaitWhile(() => player.IsInSynapse);
+        prevNeuron.SetSpawnerActive(false);
+    }
 }

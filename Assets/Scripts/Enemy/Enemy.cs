@@ -1,22 +1,27 @@
+using System.Collections;
 using UnityEngine;
 using static Emotions;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Enemy : MonoBehaviour
 {
+    protected const int minLife = 0;
+
     public int maxLife = 30;
     public int damage = 20;
-    public float speed = 2.0f;
+    public float speed = 2.5f;
     public float stopAt = 0.1f;
+    public float moveAnimationTime = 0.2f;
     public GameObject projectilePrefab;
 
     protected int currentLife;
     protected Vector2 targetPosition;
-    protected Transform player;
+    protected Player player;
     protected SpriteRenderer spriteRenderer;
 
     private float sqrStopAt;
     private Rigidbody2D rb;
+    private bool isMoving = false;
 
     public Emotion Emotion { get; set; } = Emotion.Neutral;
 
@@ -28,12 +33,16 @@ public abstract class Enemy : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         SetSprite();
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     private void FixedUpdate()
     {
-        Move();
+        isMoving = !player.IsInSynapse;
+        if (isMoving)
+        {
+            Move();
+        }
     }
 
     public virtual void GetDamage(int damage, Emotion damageEmotion)
@@ -43,11 +52,11 @@ public abstract class Enemy : MonoBehaviour
             damage = SameEmotionDamage(damage);
         }
 
-        currentLife -= damage;
+        currentLife = Mathf.Clamp(currentLife - damage, minLife, maxLife);
 
-        if (currentLife <= 0)
+        if (currentLife == minLife)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -58,11 +67,35 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Move()
     {
         Vector2 toTarget = targetPosition - rb.position;
-        if (toTarget.sqrMagnitude > sqrStopAt)
+        isMoving = toTarget.sqrMagnitude > sqrStopAt;
+        if (isMoving)
         {
             Vector2 newPosition = rb.position + speed * Time.deltaTime * toTarget.normalized;
             rb.MovePosition(newPosition);
         }
+    }
+
+    protected virtual void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    private IEnumerator MoveAnimation()
+    {
+        while (true)
+        {
+            if (isMoving)
+            {
+                spriteRenderer.flipX = !spriteRenderer.flipX;
+            }
+
+            yield return new WaitForSeconds(moveAnimationTime);
+        }
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(MoveAnimation());
     }
 
     protected virtual void OnPlayerCollisionEnter(Player player)
@@ -74,7 +107,19 @@ public abstract class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            OnPlayerCollisionEnter(collision.gameObject.GetComponent<Player>());
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (!player.IsInSynapse)
+            {
+                OnPlayerCollisionEnter(player);
+            }
         }
+    }
+
+    protected virtual void OnValidate()
+    {
+        maxLife = Mathf.Max(minLife, maxLife);
+        damage = Mathf.Max(0, damage);
+        speed = Mathf.Max(0, speed);
+        stopAt = Mathf.Max(0, stopAt);
     }
 }

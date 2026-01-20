@@ -28,7 +28,7 @@ public class Boss : Enemy
     {
         { Phase.Phase1, 120 },
         { Phase.Phase2, 70 },
-        { Phase.Phase3, 0 }
+        { Phase.Phase3, minLife }
     };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -70,6 +70,14 @@ public class Boss : Enemy
         SetSprite();
     }
 
+    protected override void Die()
+    {
+        GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(bossObjDeath, 7f);
+        MapManager.Instance.StartCoroutine(MapManager.Instance.Wait(7f));
+
+        base.Die();
+    }
+
     private IEnumerator ChangeEmotion()
     {
         while (true)
@@ -77,7 +85,7 @@ public class Boss : Enemy
             Emotion newEmotion;
             do
             {
-                newEmotion = (Emotion)Random.Range(1, 6);
+                newEmotion = GetRandomEmotion();
             } while (newEmotion.Equals(Emotion));
             Emotion = newEmotion;
 
@@ -111,11 +119,14 @@ public class Boss : Enemy
         {
             yield return new WaitForSeconds(attackTime);
 
-            EnemyProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity)
-                .GetComponent<EnemyProjectile>();
-            projectile.Emotion = Emotion;
-            projectile.Direction = ((Vector2)player.transform.position -
-                (Vector2)projectile.transform.position).normalized;
+            if (player != null)
+            {
+                EnemyProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity)
+                    .GetComponent<EnemyProjectile>();
+                projectile.Emotion = Emotion;
+                projectile.Direction = ((Vector2)player.transform.position -
+                    (Vector2)projectile.transform.position).normalized;
+            }
         }
     }
 
@@ -139,9 +150,17 @@ public class Boss : Enemy
         }
     }
 
-    private void OnDestroy() {
-        GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(bossObjDeath, 7f);
-        MapManager.Instance.StartCoroutine(MapManager.Instance.Wait(7f));
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+
+        emotionTime = Mathf.Max(0, emotionTime);
+        roamTime = Mathf.Max(0, roamTime);
+        roamRadius = Mathf.Max(0, roamRadius);
+        attackTime = Mathf.Max(0, attackTime);
+        shieldTime = Mathf.Max(0, shieldTime);
+        shieldCount = Mathf.Max(0, shieldCount);
+        shieldRadius = Mathf.Max(0, shieldRadius);
     }
 
     private void OnDrawGizmos()

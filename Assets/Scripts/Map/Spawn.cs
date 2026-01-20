@@ -1,12 +1,24 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public float radius = 0.5f;
+    public float offset = 0.6f;
+    public Synapse synapse;
+
+    private void OnValidate()
+    {
+        if (synapse != null)
+        {
+            transform.localPosition = new Vector3(-(synapse.localLength + offset),
+                transform.localPosition.y,
+                transform.localPosition.z);
+        }
+    }
 
     private void OnDrawGizmos()
     {
-        UnityEditor.Handles.color = Color.yellow;
-        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
+        Handles.color = Color.yellow;
+        Handles.DrawSolidDisc(transform.position, Vector3.back, offset);
     }
 }

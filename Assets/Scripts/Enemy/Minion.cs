@@ -1,3 +1,5 @@
+using static Emotions;
+
 public class Minion : Enemy
 {
     protected override int SameEmotionDamage(int damage)
@@ -7,18 +9,22 @@ public class Minion : Enemy
 
     protected override void SetSprite()
     {
-        spriteRenderer.sprite = SpriteManager.Instance.minionSprites[(int)Emotion];
+        spriteRenderer.sprite = SpriteManager.Instance.minionSprites[GetEmotionIndex(Emotion)];
     }
 
     protected override void Move()
     {
-        targetPosition = player.position;
+        if (player != null)
+        {
+            targetPosition = player.transform.position;
+        }
+
         base.Move();
     }
 
     protected override void OnPlayerCollisionEnter(Player player)
     {
         base.OnPlayerCollisionEnter(player);
-        Destroy(gameObject);
+        Die();
     }
 }

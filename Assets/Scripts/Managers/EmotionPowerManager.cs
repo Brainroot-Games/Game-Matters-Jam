@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Emotions;
 
 public class EmotionPowerManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class EmotionPowerManager : MonoBehaviour
 
     private void Start() => GameManager.Instance.LaunchEnableObjectForSecondsCoroutine(startObj, secondsToWait);
     
-    public void CollectEmotionPower(Emotions.Emotion emotion)
+    public void CollectEmotionPower(Emotion emotion)
     {
         int index = (int)emotion;
         if (index >= 0 && index < activePowers.Length)

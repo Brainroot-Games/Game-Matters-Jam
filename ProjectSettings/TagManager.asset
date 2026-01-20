@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Projectile
   - Bounds
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Enemy
   - Projectile
   - Bounds
-  - 
+  - Platform
   - 
   - 
   - 
@@ -41,6 +42,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 880801581
+    locked: 0
+  - name: Neuron
+    uniqueID: 2498248209
+    locked: 0
+  - name: Synapse
+    uniqueID: 1902530719
+    locked: 0
+  - name: Emotion
+    uniqueID: 1251131957
+    locked: 0
+  - name: Character
+    uniqueID: 3678429711
+    locked: 0
+  - name: Projectile
+    uniqueID: 449968993
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
