@@ -10,6 +10,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected Rigidbody2D rb;
     protected Player player;
+    protected TrailRenderer trailRenderer;
 
     private SpriteRenderer spriteRenderer;
 
@@ -23,7 +24,9 @@ public abstract class Projectile : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[GetEmotionIndex(Emotion)];
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
+
+        SetSpriteAndTrail(Emotion);
     }
 
     private void FixedUpdate()
@@ -34,13 +37,23 @@ public abstract class Projectile : MonoBehaviour
     public void SetEmotion(Emotion emotion)
     {
         Emotion = emotion;
-        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[GetEmotionIndex(Emotion)];
+        SetSpriteAndTrail(emotion);
     }
 
     protected virtual void Move()
     {
         Vector2 newPosition = rb.position + speed * Time.deltaTime * Direction;
         rb.MovePosition(newPosition);
+    }
+
+    private void SetSpriteAndTrail(Emotion emotion)
+    {
+        spriteRenderer.sprite = SpriteManager.Instance.projectileSprites[GetEmotionIndex(emotion)];
+
+        Color color = GetEmotionColor(emotion);
+        trailRenderer.startColor = color;
+        color.a = trailRenderer.endColor.a;
+        trailRenderer.endColor = color;
     }
 
     protected abstract void OnTargetTriggerEnter(GameObject target);

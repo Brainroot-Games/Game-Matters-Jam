@@ -59,6 +59,9 @@ TagManager:
   - name: Character
     uniqueID: 3678429711
     locked: 0
+  - name: Trail
+    uniqueID: 3559234765
+    locked: 0
   - name: Projectile
     uniqueID: 449968993
     locked: 0

@@ -10,6 +10,11 @@ public class EnemyProjectile : Projectile
     {
         base.Start();
         targetTag = TagHandle.GetExistingTag("Player");
+
+        if (rotationCenter != null)
+        {
+            trailRenderer.emitting = false;
+        }
     }
 
     // Update is called once per frame

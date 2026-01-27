@@ -2563,7 +2563,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 2df77f34113ee8949f50667135c2924a0f6240db61fbd11a00000000
+  m_ApplyToSortingLayers: 2df77f34113ee8949f50667135c2924a0f6240db61fbd11a00000000cd9c25d4
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3415,7 +3415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5480249248478976839, guid: e14c6e169137a53408fb8299fc7410dc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
