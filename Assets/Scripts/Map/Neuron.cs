@@ -5,12 +5,14 @@ public class Neuron : MonoBehaviour
 {
     private const string PREFIX = "Neuron";
 
-    [Header("Progressive Neuron ID" +
-        "\n(automatically set on validate)")]
+    [Tooltip("Progressive Neuron ID" +
+        " (automatically set on validate)")]
+    [Min(0)]
     public int id = 0;
 
     [Header("Gizmos Settings")]
-    public int labelFontSize = 40;
+    [Min(0)]
+    public int labelFontSize = 30;
 
     private MinionSpawner minionSpawner;
 

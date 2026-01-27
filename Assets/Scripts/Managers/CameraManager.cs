@@ -23,9 +23,9 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    public void MoveToTarget(Vector3 target, float moveTime)
+    public void OnPlayerInSynapse(Synapse synapse)
     {
-        this.target = target + offset;
-        speed = Utils.GetSpeed(transform.position, target, moveTime);
+        target = synapse.ToNeuron.transform.position + offset;
+        speed = Utils.GetSpeed(transform.position, target, synapse.moveTime);
     }
 }

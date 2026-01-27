@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd13f6639fdbbc468f92ac98c13515b, type: 3}
+  m_Name: ConnectionList
+  m_EditorClassIdentifier: Assembly-CSharp::ConnectionList
+  connectionPrefab: {fileID: 5252172135759415758, guid: e3bfd97e6fae3bb4891ddff36be0268b, type: 3}
+  connections:
+  - fromNeuronId: 1
+    toNeuronId: 2
+  - fromNeuronId: 1
+    toNeuronId: 3
+  - fromNeuronId: 1
+    toNeuronId: 4
+  - fromNeuronId: 3
+    toNeuronId: 4

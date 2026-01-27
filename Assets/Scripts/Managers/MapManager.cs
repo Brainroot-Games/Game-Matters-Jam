@@ -43,13 +43,6 @@ public class MapManager : MonoBehaviour {
         ShowCurrentLife();
     }
 
-    public void ChangeNeuron(Neuron neuron)
-    {
-        StartCoroutine(WaitWhilePlayerInSynapse(currentNeuron));
-        currentNeuron = neuron;
-        currentNeuron.SetSpawnerActive(true);
-    }
-
     private void ShowCurrentLife()
     {
         currentLifeText.text = player.CurrentLife.ToString();
@@ -73,9 +66,14 @@ public class MapManager : MonoBehaviour {
         GameManager.Instance.LaunchEnableForSecondsThenQuitCoroutine(credits, 7f);
     }
 
-    private IEnumerator WaitWhilePlayerInSynapse(Neuron prevNeuron)
+    public void OnPlayerInSynapse(Synapse synapse)
     {
-        yield return new WaitWhile(() => player.IsInSynapse);
-        prevNeuron.SetSpawnerActive(false);
+        currentNeuron = synapse.ToNeuron;
+        currentNeuron.SetSpawnerActive(true);
+    }
+
+    public void OnPlayerOutSynapse(Synapse synapse)
+    {
+        synapse.FromNeuron.SetSpawnerActive(false);
     }
 }

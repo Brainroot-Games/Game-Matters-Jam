@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - Bounds
   - Platform
+  - Neurons
+  - Connections
   layers:
   - Default
   - TransparentFX

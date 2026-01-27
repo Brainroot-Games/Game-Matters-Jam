@@ -7,9 +7,12 @@ using static Emotions;
 [RequireComponent(typeof(Player))]
 public class PlayerController : MonoBehaviour
 {
+    [Min(0)]
     public float speed = 5.0f;
     public GameObject projectilePrefab;
+    [Min(0)]
     public float attackCooldown = 1f;
+    [Min(0)]
     public float moveAnimationTime = 0.2f;
 
     private Player player;
@@ -20,8 +23,6 @@ public class PlayerController : MonoBehaviour
     private float actualSpeed = 0f;
     private bool canMove = true;
     private bool canAttack = true;
-
-    public bool CanMove { get => canMove; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,7 +43,7 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        if (CanMove)
+        if (canMove)
         {
             direction = moveInput;
         }
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (canAttack)
+        if (canAttack && canMove)
         {
             PlayerProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity)
                 .GetComponent<PlayerProjectile>();
@@ -58,8 +59,6 @@ public class PlayerController : MonoBehaviour
             projectile.Direction =
                 ((Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) -
                 (Vector2)projectile.transform.position).normalized;
-
-            player.AddProjectile(projectile);
 
             StartCoroutine(AttackCooldown());
         }
@@ -85,27 +84,30 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(newPosition);
     }
 
-    public void AutoMove(Vector2 from, Vector2 to, float moveTime)
+    public void AutoMove(Synapse synapse)
     {
         canMove = false;
         rb.bodyType = RigidbodyType2D.Kinematic;
+
+        Vector2 from = synapse.teleport.transform.position;
+        Vector2 to = synapse.spawn.transform.position;
         transform.position = from;
         direction = (to - from).normalized;
-        actualSpeed = Utils.GetSpeed(from, to, moveTime);
+        actualSpeed = Utils.GetSpeed(from, to, synapse.moveTime);
 
-        StartCoroutine(MoveCooldown(moveTime, to));
+        StartCoroutine(MoveCooldown(synapse));
     }
 
-    private IEnumerator MoveCooldown(float moveTime, Vector2 finalPosition)
+    private IEnumerator MoveCooldown(Synapse synapse)
     {
         yield return new WaitForFixedUpdate();
-        yield return new WaitForSeconds(moveTime);
+        yield return new WaitForSeconds(synapse.moveTime);
         yield return new WaitForFixedUpdate();
 
-        ResumeManualMove(finalPosition);
+        EventManager.Instance.onPlayerOutSynapse.Invoke(synapse);
     }
 
-    private void ResumeManualMove(Vector2 position)
+    public void ResumeManualMove(Vector2 position)
     {
         transform.position = position;
         rb.bodyType = RigidbodyType2D.Dynamic;
@@ -132,11 +134,5 @@ public class PlayerController : MonoBehaviour
 
             yield return new WaitForSeconds(moveAnimationTime);
         }
-    }
-
-    private void OnValidate()
-    {
-        speed = Mathf.Max(0, speed);
-        attackCooldown = Mathf.Max(0, attackCooldown);
     }
 }

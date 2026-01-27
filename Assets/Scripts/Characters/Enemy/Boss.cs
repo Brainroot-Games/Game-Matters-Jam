@@ -12,12 +12,19 @@ public class Boss : Enemy
         Phase3
     }
 
+    [Min(0)]
     public float emotionTime = 3f;
+    [Min(0)]
     public float roamTime = 5f;
+    [Min(0)]
     public float roamRadius = 3f;
+    [Min(0)]
     public float attackTime = 2f;
+    [Min(0)]
     public float shieldTime = 20f;
+    [Min(0)]
     public int shieldCount = 5;
+    [Min(0)]
     public float shieldRadius = 1.5f;
     public GameObject bossObjDeath;
 
@@ -148,19 +155,6 @@ public class Boss : Enemy
 
             yield return new WaitForSeconds(shieldTime);
         }
-    }
-
-    protected override void OnValidate()
-    {
-        base.OnValidate();
-
-        emotionTime = Mathf.Max(0, emotionTime);
-        roamTime = Mathf.Max(0, roamTime);
-        roamRadius = Mathf.Max(0, roamRadius);
-        attackTime = Mathf.Max(0, attackTime);
-        shieldTime = Mathf.Max(0, shieldTime);
-        shieldCount = Mathf.Max(0, shieldCount);
-        shieldRadius = Mathf.Max(0, shieldRadius);
     }
 
     private void OnDrawGizmos()

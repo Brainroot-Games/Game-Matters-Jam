@@ -8,9 +8,13 @@ public abstract class Enemy : MonoBehaviour
     protected const int minLife = 0;
 
     public int maxLife = 30;
+    [Min(0)]
     public int damage = 20;
+    [Min(0)]
     public float speed = 2.5f;
+    [Min(0)]
     public float stopAt = 0.1f;
+    [Min(0)]
     public float moveAnimationTime = 0.2f;
     public GameObject projectilePrefab;
 
@@ -21,6 +25,7 @@ public abstract class Enemy : MonoBehaviour
 
     private float sqrStopAt;
     private Rigidbody2D rb;
+    private bool canMove = true;
     private bool isMoving = false;
 
     public Emotion Emotion { get; set; } = Emotion.Neutral;
@@ -34,16 +39,23 @@ public abstract class Enemy : MonoBehaviour
         SetSprite();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        canMove = !player.IsInSynapse;
+
+        AddListeners();
     }
 
     private void FixedUpdate()
     {
-        isMoving = !player.IsInSynapse;
-        if (isMoving)
+        if (canMove)
         {
             Move();
         }
+        else
+        {
+            isMoving = false;
+        }
     }
+
 
     public virtual void GetDamage(int damage, Emotion damageEmotion)
     {
@@ -93,6 +105,22 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    private void AddListeners()
+    {
+        EventManager.Instance.onPlayerInSynapse.AddListener(OnPlayerInSynapse);
+        EventManager.Instance.onPlayerOutSynapse.AddListener(OnPlayerOutSynapse);
+    }
+
+    public void OnPlayerInSynapse(Synapse synapse)
+    {
+        canMove = false;
+    }
+
+    public void OnPlayerOutSynapse(Synapse synapse)
+    {
+        canMove = true;
+    }
+
     private void OnEnable()
     {
         StartCoroutine(MoveAnimation());
@@ -115,11 +143,8 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    protected virtual void OnValidate()
+    private void OnValidate()
     {
         maxLife = Mathf.Max(minLife, maxLife);
-        damage = Mathf.Max(0, damage);
-        speed = Mathf.Max(0, speed);
-        stopAt = Mathf.Max(0, stopAt);
     }
 }

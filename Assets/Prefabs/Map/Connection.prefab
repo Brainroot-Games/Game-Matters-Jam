@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cb19e279edb72409ad32c23723ae12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Connection
-  length: 1
+  scale: 1
   lineThickness: 10
   synapses:
   - {fileID: 2852149203576171474}
@@ -65,18 +65,6 @@ PrefabInstance:
     - target: {fileID: 743436578702040590, guid: 7eb0a7dc2074d52499245bc312c453e4, type: 3}
       propertyPath: m_Name
       value: Synapse B
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494723584588832090, guid: 7eb0a7dc2074d52499245bc312c453e4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494723584588832090, guid: 7eb0a7dc2074d52499245bc312c453e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494723584588832090, guid: 7eb0a7dc2074d52499245bc312c453e4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6494723584588832090, guid: 7eb0a7dc2074d52499245bc312c453e4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -105,10 +93,6 @@ PrefabInstance:
     - target: {fileID: 6494723584588832090, guid: 7eb0a7dc2074d52499245bc312c453e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8324296013979497963, guid: 7eb0a7dc2074d52499245bc312c453e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

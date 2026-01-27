@@ -8,11 +8,18 @@ public class PlayerProjectile : Projectile
     {
         base.Start();
         targetTag = TagHandle.GetExistingTag("Enemy");
+
+        AddListeners();
     }
 
-    private void OnDestroy()
+    private void AddListeners()
     {
-        player.RemoveProjectile(this);
+        EventManager.Instance.onPlayerInSynapse.AddListener(OnPlayerInSynapse);
+    }
+
+    public void OnPlayerInSynapse(Synapse synapse)
+    {
+        Destroy(gameObject);
     }
 
     protected override void OnTargetTriggerEnter(GameObject target)

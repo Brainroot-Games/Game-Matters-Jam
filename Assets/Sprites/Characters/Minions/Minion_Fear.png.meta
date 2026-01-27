@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Paura_Nemico_0
+      name: Minion_Fear
       rect:
         serializedVersion: 2
         x: 17
@@ -108,7 +108,7 @@ TextureImporter:
         width: 62
         height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Paura_Nemico_0: -2175102286716891337
+      Minion_Fear: -2175102286716891337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

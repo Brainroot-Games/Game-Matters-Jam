@@ -84,7 +84,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.26, y: 1.26}
+  m_Size: {x: 1.02, y: 1.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -204,6 +204,7 @@ MonoBehaviour:
   damage: 40
   speed: 3
   stopAt: 0.1
+  moveAnimationTime: 0.2
   projectilePrefab: {fileID: 3739651342443937831, guid: 19e26416e5f956647971cf350f8f0a07, type: 3}
   emotionTime: 3
   roamTime: 5

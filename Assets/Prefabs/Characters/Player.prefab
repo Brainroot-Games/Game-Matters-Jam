@@ -291,6 +291,7 @@ MonoBehaviour:
   speed: 5
   projectilePrefab: {fileID: 4733967215990418206, guid: ca55b80d6ef71d6429f078a49a3c3f94, type: 3}
   attackCooldown: 1
+  moveAnimationTime: 0.2
 --- !u!1 &8604398528549061988
 GameObject:
   m_ObjectHideFlags: 0

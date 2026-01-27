@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using static Emotions;
 
@@ -10,35 +9,16 @@ public class Player : MonoBehaviour
     public int maxLife = 100;
 
     private PlayerController controller;
-    private List<PlayerProjectile> projectiles = new List<PlayerProjectile>();
 
     public int CurrentLife { get; set; }
     public Emotion Emotion { get; set; } = Emotion.Neutral;
-    public bool IsInSynapse { get => !controller.CanMove; }
+    public bool IsInSynapse { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         CurrentLife = maxLife;
         controller = GetComponent<PlayerController>();
-    }
-
-    public void AddProjectile(PlayerProjectile projectile)
-    {
-        projectiles.Add(projectile);
-    }
-
-    public void RemoveProjectile(PlayerProjectile projectile)
-    {
-        projectiles.Remove(projectile);
-    }
-
-    public void MoveInSynapse(Transform teleport, Transform spawn, float moveTime)
-    {
-        projectiles.ForEach(projectile => Destroy(projectile.gameObject));
-        projectiles.Clear();
-
-        controller.AutoMove(teleport.position, spawn.position, moveTime);
     }
 
     public void GetDamage(int damage)
@@ -62,6 +42,18 @@ public class Player : MonoBehaviour
         MapManager.Instance.DisableLifeUI();
         controller.enabled = false;
         GameManager.EnableObject(GameManager.Instance.GameOverUI);
+    }
+
+    public void OnPlayerInSynapse(Synapse synapse)
+    {
+        IsInSynapse = true;
+        controller.AutoMove(synapse);
+    }
+
+    public void OnPlayerOutSynapse(Synapse synapse)
+    {
+        IsInSynapse = false;
+        controller.ResumeManualMove(synapse.spawn.position);
     }
 
     private void OnValidate()

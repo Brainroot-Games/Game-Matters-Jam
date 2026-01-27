@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,31 +7,62 @@ public class Connection : MonoBehaviour
 {
     private const string PREFIX = "Connection";
 
-    public const string BUTTON_TEXT = "Connect Neurons";
     public const int SYNAPSES_SIZE = 2;
     public const int NEURONS_SIZE = SYNAPSES_SIZE;
 
-    [Header("Local scale on the x-axis" +
-        "\n(set it here to automatically set the spawns positions)")]
-    public float length = 1.0f;
+    [Tooltip("Local scale on the x-axis" +
+        " (set it here to automatically set the spawns positions)")]
+    [Min(0.01f)]
+    public float scale = 1f;
 
     [Header("Gizmos Settings")]
+    [Min(0)]
     public float lineThickness = 10f;
 
-    [Header("Synapses (fixed size of 2)")]
+    [Header("Connection Settings")]
+    [Tooltip("Synapses (fixed size of 2)")]
     public Synapse[] synapses = new Synapse[SYNAPSES_SIZE];
 
-    [Header("Connected Neurons (fixed size of 2)" +
-        "\n(automatically set with button \"" + BUTTON_TEXT + "\")")]
+    [Tooltip("Connected Neurons (fixed size of 2)" +
+        " (automatically set with button or tools)")]
     public Neuron[] neurons = new Neuron[NEURONS_SIZE];
+
+    public float LocalLength => synapses.Select(synapse => synapse.localLength).Sum();
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        SetSynapsesNeurons();
+    }
+
+    public void Validate()
+    {
+        Scale();
+        SetArraySizes();
+        SetSpawnPositions();
+
+        if (PrefabUtility.GetPrefabInstanceStatus(this) == PrefabInstanceStatus.Connected)
+        {
+            SetName();
+        }
+    }
+
+    private void SetSynapsesNeurons()
+    {
+        for (int i = 0; i < synapses.Length; i++)
+        {
+            synapses[i].FromNeuron = neurons[i];
+            synapses[i].ToNeuron = neurons[neurons.Length - 1 - i];
+        }
+    }
 
     private void Scale()
     {
-        length = Mathf.Max(0, length);
-        transform.localScale = new Vector3(length, transform.localScale.y, transform.localScale.z);
+        scale = Mathf.Max(0.01f, scale);
+        transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
     }
 
-    private void SetArraysSize()
+    private void SetArraySizes()
     {
         SetArraySize(ref synapses, SYNAPSES_SIZE);
         SetArraySize(ref neurons, NEURONS_SIZE);
@@ -46,17 +78,13 @@ public class Connection : MonoBehaviour
         }
     }
 
-    private void SetSpawnPosition()
+    private void SetSpawnPositions()
     {
         foreach (Synapse synapse in synapses)
         {
-            if (synapse != null && length != 0)
+            if (synapse != null && scale != 0)
             {
-                Transform spawnTransform = synapse.spawn;
-                Spawn spawn = spawnTransform.GetComponent<Spawn>();
-                spawnTransform.localPosition = new Vector3(-(synapse.localLength + spawn.offset / length),
-                    spawnTransform.localPosition.y,
-                    spawnTransform.localPosition.z);
+                synapse.spawn.GetComponent<Spawn>().SetPosition(scale);
             }
         }
     }
@@ -78,14 +106,7 @@ public class Connection : MonoBehaviour
 
     private void OnValidate()
     {
-        Scale();
-        SetArraysSize();
-        SetSpawnPosition();
-
-        if (PrefabUtility.GetPrefabInstanceStatus(this) == PrefabInstanceStatus.Connected)
-        {
-            SetName();
-        }
+        Validate();
     }
 
     private void OnDrawGizmos()
