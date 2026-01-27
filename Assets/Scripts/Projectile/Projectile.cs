@@ -52,10 +52,7 @@ public abstract class Projectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (player.IsInSynapse)
-            return;
-
-        if (other.CompareTag(targetTag))
+        if (other.CompareTag(targetTag) && !player.IsInSynapse)
         {
             OnTargetTriggerEnter(other.gameObject);
         }
