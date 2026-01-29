@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Emotions;
 
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     [Min(0)]
@@ -12,27 +13,26 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     [Min(0)]
     public float attackCooldown = 1f;
-    [Min(0)]
-    public float moveAnimationTime = 0.2f;
 
     private Player player;
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
+    private Animator animator;
     private Vector2 moveInput = Vector2.zero;
     private Vector2 direction = Vector2.zero;
     private float actualSpeed = 0f;
     private bool canMove = true;
     private bool canAttack = true;
 
+    private bool IsMoving => direction != Vector2.zero;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        actualSpeed = speed;
+        animator = GetComponent<Animator>();
 
-        StartCoroutine(MoveAnimation());
+        actualSpeed = speed;
     }
 
     private void FixedUpdate()
@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 newPosition = rb.position + actualSpeed * Time.deltaTime * direction;
         rb.MovePosition(newPosition);
+
+        animator.SetBool("IsMoving", IsMoving);
     }
 
     public void AutoMove(Synapse synapse)
@@ -121,18 +123,5 @@ public class PlayerController : MonoBehaviour
         canAttack = false;
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
-    }
-
-    private IEnumerator MoveAnimation()
-    {
-        while (true)
-        {
-            if (direction != Vector2.zero)
-            {
-                spriteRenderer.flipX = !spriteRenderer.flipX;
-            }
-
-            yield return new WaitForSeconds(moveAnimationTime);
-        }
     }
 }

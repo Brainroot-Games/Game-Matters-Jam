@@ -1,8 +1,8 @@
-using System.Collections;
 using UnityEngine;
 using static Emotions;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public abstract class Enemy : MonoBehaviour
 {
     protected const int minLife = 0;
@@ -14,8 +14,6 @@ public abstract class Enemy : MonoBehaviour
     public float speed = 2.5f;
     [Min(0)]
     public float stopAt = 0.1f;
-    [Min(0)]
-    public float moveAnimationTime = 0.2f;
     public GameObject projectilePrefab;
 
     protected int currentLife;
@@ -25,6 +23,7 @@ public abstract class Enemy : MonoBehaviour
 
     private float sqrStopAt;
     private Rigidbody2D rb;
+    private Animator animator;
     private bool canMove = true;
     private bool isMoving = false;
 
@@ -34,10 +33,13 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         sqrStopAt = stopAt * stopAt;
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
         currentLife = maxLife;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         SetSprite();
-        rb = GetComponent<Rigidbody2D>();
+
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         canMove = !player.IsInSynapse;
 
@@ -54,6 +56,8 @@ public abstract class Enemy : MonoBehaviour
         {
             isMoving = false;
         }
+
+        animator.SetBool("IsMoving", isMoving);
     }
 
 
@@ -92,19 +96,6 @@ public abstract class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator MoveAnimation()
-    {
-        while (true)
-        {
-            if (isMoving)
-            {
-                spriteRenderer.flipX = !spriteRenderer.flipX;
-            }
-
-            yield return new WaitForSeconds(moveAnimationTime);
-        }
-    }
-
     private void AddListeners()
     {
         EventManager.Instance.onPlayerInSynapse.AddListener(OnPlayerInSynapse);
@@ -119,11 +110,6 @@ public abstract class Enemy : MonoBehaviour
     public void OnPlayerOutSynapse(Synapse synapse)
     {
         canMove = true;
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(MoveAnimation());
     }
 
     protected virtual void OnPlayerCollisionEnter(Player player)

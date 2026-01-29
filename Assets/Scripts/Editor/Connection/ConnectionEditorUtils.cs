@@ -50,8 +50,13 @@ public static class ConnectionEditorUtils
                     GenerateConnection(connectionList.connectionPrefab, fromNeuron, toNeuron);
                 }
             }
+            else
+            {
+                Debug.LogWarning($"Connection {connection.fromNeuronId}-{connection.toNeuronId}" +
+                    $" is invalid and has not been generated.");
+            }
 
-            allValid &= valid;
+                allValid &= valid;
         }
 
         return allValid;

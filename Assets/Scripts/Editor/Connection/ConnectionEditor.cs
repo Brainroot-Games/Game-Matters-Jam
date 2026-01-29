@@ -34,6 +34,15 @@ public class ConnectionEditor : Editor
             SetNeurons();
         }
 
+        if (neuronsProp[0].objectReferenceValue == null ||
+            neuronsProp[1].objectReferenceValue == null ||
+            neuronsProp[0].objectReferenceValue == neuronsProp[1].objectReferenceValue)
+        {
+            EditorGUILayout.HelpBox(
+                    $"Connected Neurons must be non-null and different.",
+                    MessageType.Warning);
+        }
+
         serializedObject.ApplyModifiedProperties();
     }
 
